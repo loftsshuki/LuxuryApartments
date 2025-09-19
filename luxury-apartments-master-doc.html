@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuxuryApartments.com - Master Strategy & Implementation Guide</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gold-gradient: linear-gradient(135deg, #D4AF37 0%, #F4E5BC 100%);
+            --dark-gradient: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            --success-gradient: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            --primary-color: #667eea;
+            --secondary-color: #764ba2;
+            --gold: #D4AF37;
+            --text-dark: #1a1a1a;
+            --text-light: #6b7280;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: #ffffff;
+            overflow-x: hidden;
+        }
+        
+        /* Navigation */
+        .nav-sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            width: 280px;
+            background: var(--dark-gradient);
+            padding: 30px 20px;
+            overflow-y: auto;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+        
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: white;
+            margin-bottom: 40px;
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(255,255,255,0.2);
+        }
+        
+        .nav-section {
+            margin-bottom: 30px;
+        }
+        
+        .nav-section-title {
+            color: var(--gold);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .nav-link {
+            display: block;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 5px;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        /* Mobile Menu Toggle */
+        .mobile-toggle {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1001;
+            background: var(--primary-gradient);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        
+        /* Main Content */
+        .main-content {
+            margin-left: 280px;
+            min-height: 100vh;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: var(--primary-gradient);
+            padding: 100px 60px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 72px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .hero-subtitle {
+            font-size: 24px;
+            font-weight: 300;
+            opacity: 0.95;
+            margin-bottom: 40px;
+        }
+        
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 60px auto 0;
+        }
+        
+        .hero-stat {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .hero-stat-number {
+            font-size: 42px;
+            font-weight: 800;
+            color: var(--gold);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .hero-stat-label {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+        
+        /* Content Sections */
+        .content-section {
+            padding: 80px 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+        
+        .section-header p {
+            font-size: 18px;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            border-color: var(--primary-color);
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary-gradient);
+        }
+        
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-gradient);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        
+        .card h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+        
+        .card p {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .card-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e7eb;
+        }
+        
+        .card-stat {
+            text-align: center;
+        }
+        
+        .card-stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .card-stat-label {
+            font-size: 12px;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 40px 0;
+            margin: 60px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary-gradient);
+        }
+        
+        .timeline-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .timeline-content {
+            width: 45%;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--primary-gradient);
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2);
+        }
+        
+        .timeline-date {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        /* Tables */
+        .data-table {
+            width: 100%;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            margin: 40px 0;
+        }
+        
+        .data-table thead {
+            background: var(--dark-gradient);
+        }
+        
+        .data-table th {
+            color: white;
+            padding: 20px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .data-table td {
+            padding: 20px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .data-table tr:hover {
+            background: #f9fafb;
+        }
+        
+        /* Feature Boxes */
+        .feature-box {
+            background: linear-gradient(135deg, #f6f8fb 0%, #e9ecef 100%);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--primary-gradient);
+        }
+        
+        .feature-box h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+        
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: start;
+            gap: 15px;
+        }
+        
+        .feature-item-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-gradient);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        
+        .feature-item-content h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .feature-item-content p {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+        
+        /* ROI Box */
+        .roi-box {
+            background: var(--success-gradient);
+            color: white;
+            padding: 60px;
+            border-radius: 25px;
+            text-align: center;
+            margin: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .roi-box::before, .roi-box::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .roi-box::before {
+            top: -150px;
+            left: -150px;
+        }
+        
+        .roi-box::after {
+            bottom: -150px;
+            right: -150px;
+        }
+        
+        .roi-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .roi-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .roi-metric {
+            background: rgba(255,255,255,0.2);
+            padding: 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .roi-metric-value {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+        
+        .roi-metric-label {
+            font-size: 14px;
+            opacity: 0.95;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: var(--dark-gradient);
+            color: white;
+            padding: 80px 60px;
+            text-align: center;
+            margin-top: 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .cta-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta-subtitle {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .btn {
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        
+        .btn-primary {
+            background: var(--gold-gradient);
+            color: var(--text-dark);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border-color: white;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: var(--text-dark);
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .nav-sidebar {
+                transform: translateX(-100%);
+            }
+            
+            .nav-sidebar.active {
+                transform: translateX(0);
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            .content-section {
+                padding: 60px 30px;
+            }
+            
+            .hero h1 {
+                font-size: 48px;
+            }
+            
+            .timeline-item {
+                flex-direction: column !important;
+            }
+            
+            .timeline-content {
+                width: 100%;
+                margin: 20px 0;
+            }
+            
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-dot {
+                left: 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 30px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .roi-metrics {
+                grid-template-columns: 1fr;
+            }
+            
+            .feature-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Sidebar -->
+    <nav class="nav-sidebar" id="navSidebar">
+        <div class="nav-logo">LUXURYAPARTMENTS</div>
+        
+        <div class="nav-section">
+            <div class="nav-section-title">Strategy Overview</div>
+            <a href="#overview" class="nav-link active">Executive Summary</a>
+            <a href="#market" class="nav-link">Market Opportunity</a>
+            <a href="#domain" class="nav-link">Domain Advantage</a>
+        </div>
+        
+        <div class="nav-section">
+            <div class="nav-section-title">Revenue Strategies</div>
+            <a href="#revenue-model" class="nav-link">Business Model</a>
+            <a href="#influencer" class="nav-link">Influencer Marketing</a>
+            <a href="#financial" class="nav-link">Financial Products</a>
+            <a href="#insurance" class="nav-link">Insurance Suite</a>
+        </div>
+        
+        <div class="nav-section">
+            <div class="nav-section-title">Implementation</div>
+            <a href="#roadmap" class="nav-link">180-Day Roadmap</a>
+            <a href="#mobile" class="nav-link">Mobile Experience</a>
+            <a href="#kiosk" class="nav-link">Concierge Kiosks</a>
+            <a href="#partnerships" class="nav-link">Partnerships</a>
+        </div>
+        
+        <div class="nav-section">
+            <div class="nav-section-title">Growth Tactics</div>
+            <a href="#reddit" class="nav-link">Reddit Strategy</a>
+            <a href="#sweepstakes" class="nav-link">Sweepstakes</a>
+            <a href="#furniture" class="nav-link">Furniture Partners</a>
+        </div>
+    </nav>
+    
+    <!-- Mobile Toggle -->
+    <button class="mobile-toggle" onclick="toggleNav()">☰ Menu</button>
+    
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>LuxuryApartments.com</h1>
+            <p class="hero-subtitle">The Premium PropTech Platform Revolutionizing Luxury Rentals</p>
+            
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-number">$50B+</div>
+                    <div class="hero-stat-label">Market Opportunity</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">$5-10M</div>
+                    <div class="hero-stat-label">Domain Value</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">60%</div>
+                    <div class="hero-stat-label">Lower CAC</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">$422M</div>
+                    <div class="hero-stat-label">Year 5 Revenue</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">224%</div>
+                    <div class="hero-stat-label">Projected ROI</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">150+</div>
+                    <div class="hero-stat-label">Influencer Partners</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Executive Summary -->
+        <section id="overview" class="content-section">
+            <div class="section-header">
+                <h2>Executive Summary</h2>
+                <p>A comprehensive strategy to dominate the luxury rental market through technology, influencer marketing, and innovative financial products</p>
+            </div>
+            
+            <div class="feature-box">
+                <h3>The Opportunity</h3>
+                <p>LuxuryApartments.com is positioned to become the dominant platform in the $50+ billion luxury rental market by combining an unbeatable domain asset, innovative technology, comprehensive luxury services, and the most ambitious influencer marketing strategy ever deployed in real estate.</p>
+                
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <div class="feature-item-icon">🏢</div>
+                        <div class="feature-item-content">
+                            <h4>Market Size</h4>
+                            <p>$18.2B US market growing at 8.3% annually with no dominant digital player</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-item-icon">🌐</div>
+                        <div class="feature-item-content">
+                            <h4>Domain Advantage</h4>
+                            <p>Exact-match domain worth $5-10M provides 60% CAC reduction and instant authority</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-item-icon">🚀</div>
+                        <div class="feature-item-content">
+                            <h4>Technology Innovation</h4>
+                            <p>60-second instant approval, AR/VR tours, blockchain verification</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-item-icon">💰</div>
+                        <div class="feature-item-content">
+                            <h4>Revenue Diversification</h4>
+                            <p>Marketplace + financial services + insurance + property management</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Market Opportunity -->
+        <section id="market" class="content-section">
+            <div class="section-header">
+                <h2>Market Opportunity</h2>
+                <p>Capturing the underserved luxury rental segment with premium positioning</p>
+            </div>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Market Segment</th>
+                        <th>Size</th>
+                        <th>Growth Rate</th>
+                        <th>Our Target Share</th>
+                        <th>Revenue Potential</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Luxury US Rentals ($5K+)</td>
+                        <td>$18.2B</td>
+                        <td>8.3% YoY</td>
+                        <td>5% by Year 5</td>
+                        <td>$910M</td>
+                    </tr>
+                    <tr>
+                        <td>Corporate Relocations</td>
+                        <td>$12B</td>
+                        <td>7.2% YoY</td>
+                        <td>8% by Year 5</td>
+                        <td>$960M</td>
+                    </tr>
+                    <tr>
+                        <td>International Markets</td>
+                        <td>$127B</td>
+                        <td>12.1% YoY</td>
+                        <td>1% by Year 5</td>
+                        <td>$1.27B</td>
+                    </tr>
+                    <tr>
+                        <td>Financial Services</td>
+                        <td>$8B TAM</td>
+                        <td>15% YoY</td>
+                        <td>3% by Year 5</td>
+                        <td>$240M</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <!-- Revenue Model -->
+        <section id="revenue-model" class="content-section">
+            <div class="section-header">
+                <h2>Revolutionary Revenue Model</h2>
+                <p>Multiple revenue streams creating a resilient, high-margin business</p>
+            </div>
+            
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">🏢</div>
+                    <h3>Core Marketplace</h3>
+                    <p>SaaS subscriptions, transaction fees, and premium listings for property managers</p>
+                    <div class="card-stats">
+                        <div class="card-stat">
+                            <div class="card-stat-value">$102M</div>
+                            <div class="card-stat-label">Year 5 Revenue</div>
+                        </div>
+                        <div class="card-stat">
+                            <div class="card-stat-value">46%</div>
+                            <div class="card-stat-label">Gross Margin</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">💎</div>
+                    <h3>Luxury Services</h3>
+                    <p>Concierge services, express approvals, Black Card membership program</p>
+                    <div class="card-stats">
+                        <div class="card-stat">
+                            <div class="card-stat-value">$180M</div>
+                            <div class="card-stat-label">Year 5 Revenue</div>
+                        </div>
+                        <div class="card-stat">
+                            <div class="card-stat-value">85%</div>
+                            <div class="card-stat-label">Gross Margin</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">💳</div>
+                    <h3>Financial Products</h3>
+                    <p>Rent financing, security deposit alternatives, luxury credit cards</p>
+                    <div class="card-stats">
+                        <div class="card-stat">
+                            <div class="card-stat-value">$27M</div>
+                            <div class="card-stat-label">Year 3 Revenue</div>
+                        </div>
+                        <div class="card-stat">
+                            <div class="card-stat-value">40%</div>
+                            <div class="card-stat-label">Net Margin</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">🛡️</div>
+                    <h3>Insurance Suite</h3>
+                    <p>Elite renter's insurance, lifestyle protection, job loss coverage</p>
+                    <div class="card-stats">
+                        <div class="card-stat">
+                            <div class="card-stat-value">$8M</div>
+                            <div class="card-stat-label">Annual Revenue</div>
+                        </div>
+                        <div class="card-stat">
+                            <div class="card-stat-value">30%</div>
+                            <div class="card-stat-label">Commission Rate</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">🌍</div>
+                    <h3>International Expansion</h3>
+                    <p>London, Dubai, Singapore markets with localized services</p>
+                    <div class="card-stats">
+                        <div class="card-stat">
+                            <div class="card-stat-value">$450M</div>
+                            <div class="card-stat-label">Year 5 Revenue</div>
+                        </div>
+                        <div class="card-stat">
+                            <div class="card-stat-value">15</div>
+                            <div class="card-stat-label">Target Cities</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">🏠</div>
+                    <h3>Property Management</h3>
+                    <p>Full-stack management services for luxury properties</p>
+                    <div class="card-stats">
+                        <div class="card-stat">
+                            <div class="card-stat-value">$644M</div>
+                            <div class="card-stat-label">Year 5 Revenue</div>
+                        </div>
+                        <div class="card-stat">
+                            <div class="card-stat-value">30K</div>
+                            <div class="card-stat-label">Units Managed</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Influencer Marketing Strategy -->
+        <section id="influencer" class="content-section">
+            <div class="section-header">
+                <h2>Influencer Marketing Strategy</h2>
+                <p>$45M investment across 150+ influencers to drive 31,250 leases annually</p>
+            </div>
+            
+            <div class="feature-box">
+                <h3>Three-Tier Influencer Approach</h3>
+                
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Tier</th>
+                            <th>Investment</th>
+                            <th>Key Partners</th>
+                            <th>Expected Impact</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Mega-Influencers</strong></td>
+                            <td>$20M</td>
+                            <td>Emma Chamberlain, D'Amelio Sisters, Graham Stephan</td>
+                            <td>200M+ reach, brand awareness</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Design Partners</strong></td>
+                            <td>$15M</td>
+                            <td>Joanna Gaines, Studio McGee, Architectural Digest</td>
+                            <td>Property tours, rental-friendly content</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Micro-Influencers</strong></td>
+                            <td>$10M</td>
+                            <td>50+ niche creators (100K-1M followers)</td>
+                            <td>7-12% engagement, authentic advocacy</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="feature-list" style="margin-top: 40px;">
+                    <div class="feature-item">
+                        <div class="feature-item-icon">🌟</div>
+                        <div class="feature-item-content">
+                            <h4>Emma Chamberlain - Chief Youth Officer</h4>
+                            <p>$3M annual deal, 16M followers, most trusted Gen Z voice</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-item-icon">🏠</div>
+                        <div class="feature-item-content">
+                            <h4>Joanna Gaines Partnership</h4>
+                            <p>13.8M followers, family luxury positioning, Texas market coverage</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-item-icon">🎨</div>
+                        <div class="feature-item-content">
+                            <h4>50+ Design Influencers</h4>
+                            <p>Rental-friendly solutions, damage-free luxury transformations</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-item-icon">💰</div>
+                        <div class="feature-item-content">
+                            <h4>Finance Micro-Influencers</h4>
+                            <p>Vivian Tu, Tori Dunlap - reaching young professionals</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="roi-box">
+                <h3 class="roi-title">Influencer Marketing ROI Projection</h3>
+                <div class="roi-metrics">
+                    <div class="roi-metric">
+                        <div class="roi-metric-value">$45M</div>
+                        <div class="roi-metric-label">Total Investment</div>
+                    </div>
+                    <div class="roi-metric">
+                        <div class="roi-metric-value">$250M</div>
+                        <div class="roi-metric-label">Revenue Attribution</div>
+                    </div>
+                    <div class="roi-metric">
+                        <div class="roi-metric-value">31,250</div>
+                        <div class="roi-metric-label">Leases Generated</div>
+                    </div>
+                    <div class="roi-metric">
+                        <div class="roi-metric-value">224%</div>
+                        <div class="roi-metric-label">Return on Investment</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 180-Day Roadmap -->
+        <section id="roadmap" class="content-section">
+            <div class="section-header">
+                <h2>180-Day Launch Roadmap</h2>
+                <p>From concept to market leader in six months</p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Days 1-30: Foundation</div>
+                        <h4>Team & Infrastructure</h4>
+                        <ul>
+                            <li>Incorporate Delaware C-Corp</li>
+                            <li>Secure domain ownership</li>
+                            <li>Hire CTO and lead engineer</li>
+                            <li>Complete 50 customer interviews</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Days 31-60: MVP Development</div>
+                        <h4>Build Core Platform</h4>
+                        <ul>
+                            <li>Launch beta with 25 properties</li>
+                            <li>Instant approval system</li>
+                            <li>Sign first influencer partnerships</li>
+                            <li>Achieve $15K MRR</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Days 61-90: Growth</div>
+                        <h4>Scale Operations</h4>
+                        <ul>
+                            <li>Raise $2.5M seed funding</li>
+                            <li>Launch in NYC and SF</li>
+                            <li>500 properties on platform</li>
+                            <li>Deploy first tour van</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Days 91-120: Expansion</div>
+                        <h4>Market Penetration</h4>
+                        <ul>
+                            <li>Launch financial products suite</li>
+                            <li>5,000 active users</li>
+                            <li>Sign mega-influencer deals</li>
+                            <li>$150K MRR achieved</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Days 121-150: Optimization</div>
+                        <h4>Product-Market Fit</h4>
+                        <ul>
+                            <li>Launch in 5 major markets</li>
+                            <li>Deploy concierge kiosk network</li>
+                            <li>Full influencer campaign live</li>
+                            <li>Insurance products launched</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Days 151-180: Scale</div>
+                        <h4>Series A Ready</h4>
+                        <ul>
+                            <li>$500K MRR milestone</li>
+                            <li>10,000 active properties</li>
+                            <li>International expansion planning</li>
+                            <li>Close $10M Series A</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Financial Products -->
+        <section id="financial" class="content-section">
+            <div class="section-header">
+                <h2>Financial Products Suite</h2>
+                <p>Revolutionary financial services for luxury renters generating $27M annually</p>
+            </div>
+            
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">💳</div>
+                    <h3>LuxFlex Pay</h3>
+                    <p>Split rent into 2-4 payments or get 30-day float. Match payments to bonus schedules.</p>
+                    <ul style="margin-top: 15px; color: var(--text-light);">
+                        <li>1.0-1.9% transaction fee</li>
+                        <li>Soft credit check only</li>
+                        <li>Same-day approval</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">🏦</div>
+                    <h3>Deposit Vault</h3>
+                    <p>Security deposit alternative for luxury units. Keep your cash invested.</p>
+                    <ul style="margin-top: 15px; color: var(--text-light);">
+                        <li>$5K-15K coverage</li>
+                        <li>1.5-2.5% annual fee</li>
+                        <li>Instant approval</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">🎯</div>
+                    <h3>Rent Reserve</h3>
+                    <p>Job loss protection covering up to 3 months rent. Peace of mind for professionals.</p>
+                    <ul style="margin-top: 15px; color: var(--text-light);">
+                        <li>$12-25/month premium</li>
+                        <li>6-month waiting period</li>
+                        <li>Up to $15K coverage</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">💎</div>
+                    <h3>Platinum Credit Card</h3>
+                    <p>Partnership with Amex - the first card designed for luxury renters.</p>
+                    <ul style="margin-top: 15px; color: var(--text-light);">
+                        <li>5% back on rent</li>
+                        <li>$50K credit line</li>
+                        <li>Concierge included</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">🏠</div>
+                    <h3>RentEquity Program</h3>
+                    <p>25% of rent goes into investment account. Build wealth while renting.</p>
+                    <ul style="margin-top: 15px; color: var(--text-light);">
+                        <li>7% average returns</li>
+                        <li>Vests over 4 years</li>
+                        <li>$71K after 4 years</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">🚀</div>
+                    <h3>MoveNow PayLater</h3>
+                    <p>0% financing for all move-in costs. Eliminate the $30K barrier.</p>
+                    <ul style="margin-top: 15px; color: var(--text-light);">
+                        <li>12 months at 0%</li>
+                        <li>Up to $50K</li>
+                        <li>2.5% origination</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Mobile Experience -->
+        <section id="mobile" class="content-section">
+            <div class="section-header">
+                <h2>Mobile Tour Van Experience</h2>
+                <p>Transform property tours into unforgettable luxury experiences</p>
+            </div>
+            
+            <div class="feature-box">
+                <h3>The $50M Fleet Investment</h3>
+                <p>25 custom Mercedes Sprinter vans creating immersive property discovery experiences across major markets.</p>
+                
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <div class="feature-item-icon">🚐</div>
+                        <div class="feature-item-content">
+                            <h4>Ultra-Premium Mobile Lounges</h4>
+                            <p>$250K per van with Bentley-grade interiors, AR/VR capabilities, full bar</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-item-icon">🥂</div>
+                        <div class="feature-item-content">
+                            <h4>Concierge Service</h4>
+                            <p>Champagne welcome, gourmet catering, personalized itineraries</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-item-icon">📱</div>
+                        <div class="feature-item-content">
+                            <h4>Technology Integration</h4>
+                            <p>65" OLED displays, VR headsets, instant approval capability</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-item-icon">📈</div>
+                        <div class="feature-item-content">
+                            <h4>Economics</h4>
+                            <p>$1.5M revenue per van annually, 2.6 month payback period</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Call to Action -->
+        <section class="cta-section">
+            <h2 class="cta-title">Ready to Transform Luxury Rentals?</h2>
+            <p class="cta-subtitle">Join us in building the next $5B PropTech unicorn</p>
+            
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary">Investment Opportunity</a>
+                <a href="#" class="btn btn-outline">Partner With Us</a>
+            </div>
+            
+            <div style="margin-top: 60px; opacity: 0.8;">
+                <p>For more information:</p>
+                <p style="font-size: 24px; margin-top: 10px;">invest@luxuryapartments.com</p>
+            </div>
+        </section>
+    </div>
+    
+    <script>
+        // Navigation functionality
+        function toggleNav() {
+            const sidebar = document.getElementById('navSidebar');
+            sidebar.classList.toggle('active');
+        }
+        
+        // Active nav link on scroll
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (window.scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Smooth scroll
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                    
+                    // Close mobile nav if open
+                    const sidebar = document.getElementById('navSidebar');
+                    if (sidebar.classList.contains('active')) {
+                        sidebar.classList.remove('active');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuxuryApartments.com - Seed Investment Deck</title>
+    <style>
+        @media print {
+            .page-break { page-break-after: always; }
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.7;
+            color: #0f172a;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 60px;
+            background: white;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e40af 100%);
+            margin: -40px -60px 50px;
+            padding: 80px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: "🏢";
+            position: absolute;
+            font-size: 300px;
+            right: -50px;
+            top: -80px;
+            opacity: 0.05;
+            transform: rotate(15deg);
+        }
+        
+        h1 {
+            font-size: 48px;
+            margin: 0 0 20px 0;
+            font-weight: 800;
+            letter-spacing: -1px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .tagline {
+            font-size: 24px;
+            font-weight: 300;
+            opacity: 0.95;
+            margin: 15px 0;
+        }
+        
+        .confidential {
+            background: #dc2626;
+            color: white;
+            padding: 5px 20px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 20px;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+        
+        .executive-summary {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            color: white;
+            padding: 50px;
+            border-radius: 20px;
+            margin: 50px 0;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .executive-summary h2 {
+            color: white;
+            margin-top: 0;
+            font-size: 32px;
+            border: none;
+        }
+        
+        .key-metrics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .metric-card {
+            background: rgba(255,255,255,0.15);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        
+        .metric-number {
+            font-size: 36px;
+            font-weight: 800;
+            margin: 10px 0;
+        }
+        
+        .metric-label {
+            font-size: 14px;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        h2 {
+            color: #0f172a;
+            font-size: 36px;
+            margin-top: 60px;
+            margin-bottom: 30px;
+            font-weight: 700;
+            border-bottom: 3px solid #3b82f6;
+            padding-bottom: 15px;
+        }
+        
+        h3 {
+            color: #1e40af;
+            font-size: 28px;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        
+        h4 {
+            color: #334155;
+            font-size: 22px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .traction-box {
+            background: #ecfdf5;
+            border: 3px solid #10b981;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+        }
+        
+        .investment-highlights {
+            background: #f0f9ff;
+            border-left: 5px solid #3b82f6;
+            padding: 30px;
+            margin: 40px 0;
+            border-radius: 10px;
+        }
+        
+        .investment-highlights li {
+            margin: 15px 0;
+            font-size: 18px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        th {
+            background: #1e40af;
+            color: white;
+            padding: 18px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 16px;
+        }
+        
+        td {
+            padding: 18px;
+            border-bottom: 1px solid #e5e7eb;
+            background: white;
+            font-size: 15px;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        tr:nth-child(even) td {
+            background: #f8fafc;
+        }
+        
+        .revenue-model {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            margin: 40px 0;
+        }
+        
+        .revenue-stream {
+            background: rgba(255,255,255,0.15);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+            backdrop-filter: blur(10px);
+        }
+        
+        .timeline-section {
+            background: #fafbff;
+            padding: 40px;
+            border-radius: 15px;
+            margin: 40px 0;
+        }
+        
+        .phase-box {
+            background: white;
+            border-left: 4px solid #3b82f6;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .cap-table {
+            background: #fff7ed;
+            border: 2px solid #f97316;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+        }
+        
+        .competitive-advantage {
+            background: #fef3c7;
+            border: 2px solid #f59e0b;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+        }
+        
+        .roi-showcase {
+            background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+            color: white;
+            padding: 50px;
+            border-radius: 20px;
+            margin: 50px 0;
+            text-align: center;
+        }
+        
+        .roi-number {
+            font-size: 64px;
+            font-weight: 800;
+            margin: 20px 0;
+        }
+        
+        .financial-projection {
+            background: #ecfdf5;
+            border: 2px solid #10b981;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+        
+        .risk-mitigation {
+            background: #fef2f2;
+            border-left: 4px solid #ef4444;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+        
+        .use-of-funds {
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            margin: 40px 0;
+        }
+        
+        .footer {
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 3px solid #e5e7eb;
+            text-align: center;
+            color: #64748b;
+            font-size: 14px;
+        }
+        
+        .highlight-box {
+            background: #fff7ed;
+            border: 2px solid #f97316;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 30px 0;
+            font-size: 18px;
+        }
+        
+        .strategy-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .strategy-card {
+            background: white;
+            border: 2px solid #e5e7eb;
+            padding: 30px;
+            border-radius: 15px;
+            transition: transform 0.3s;
+        }
+        
+        .strategy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        strong {
+            color: #1e40af;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>LUXURYAPARTMENTS.COM</h1>
+        <div class="tagline">Revolutionizing Luxury Rentals with Technology & Financial Innovation</div>
+        <div class="tagline" style="font-size: 18px; margin-top: 20px; opacity: 0.9;">
+            $2.5M Seed Round | 10x Revenue Growth Opportunity
+        </div>
+        <div class="confidential">CONFIDENTIAL - SEED INVESTMENT DECK</div>
+    </div>
+
+    <div class="executive-summary">
+        <h2>Executive Summary</h2>
+        <p style="font-size: 20px; line-height: 1.8;">LuxuryApartments.com is building the first comprehensive lifestyle platform for high-income renters. We're transforming a proven $24M ARR rental business into a $100M technology-enabled marketplace by adding financial services, viral marketing engines, and strategic partnerships. Our seed round will prove the model with 1,000 units before scaling nationwide.</p>
+        
+        <div class="key-metrics">
+            <div class="metric-card">
+                <div class="metric-label">Current ARR</div>
+                <div class="metric-number">$24M</div>
+                <div class="metric-label">1,000 Units</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Avg Monthly Rent</div>
+                <div class="metric-number">$2,000</div>
+                <div class="metric-label">Growing to $2,500</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Target ARR (24mo)</div>
+                <div class="metric-number">$36M</div>
+                <div class="metric-label">50% Growth</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Platform Revenue</div>
+                <div class="metric-number">$6M</div>
+                <div class="metric-label">New Streams</div>
+            </div>
+        </div>
+        
+        <div style="margin-top: 40px; padding: 30px; background: rgba(255,255,255,0.1); border-radius: 15px;">
+            <h3 style="color: white; margin-top: 0;">The Ask</h3>
+            <ul style="font-size: 18px; margin: 0;">
+                <li><strong>Raising:</strong> $2.5M Seed Round</li>
+                <li><strong>Pre-Money Valuation:</strong> $10M</li>
+                <li><strong>Use of Funds:</strong> Technology platform, growth marketing, team building</li>
+                <li><strong>Expected Return:</strong> 10-15x in 3-5 years</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <h2>The Problem & Opportunity</h2>
+
+    <div class="investment-highlights">
+        <h3 style="margin-top: 0;">The $50B Problem We're Solving</h3>
+        <ul>
+            <li><strong>Renters are underserved:</strong> 44M Americans rent, yet have no wealth-building options</li>
+            <li><strong>Dead capital everywhere:</strong> $45B sitting in security deposits earning nothing</li>
+            <li><strong>Fragmented experience:</strong> Separate providers for housing, insurance, furniture, payments</li>
+            <li><strong>No loyalty or community:</strong> Average tenant stays just 18 months</li>
+            <li><strong>Archaic marketing:</strong> Apartments still rely on Craigslist and yard signs</li>
+        </ul>
+    </div>
+
+    <h3>Our Target Customer</h3>
+
+    <table>
+        <tr>
+            <th>Segment</th>
+            <th>Demographics</th>
+            <th>Pain Points</th>
+            <th>Why They'll Love Us</th>
+        </tr>
+        <tr>
+            <td><strong>Young Professionals</strong></td>
+            <td>25-35, $75K+ income</td>
+            <td>Can't afford to buy, dead rent payments</td>
+            <td>Build wealth while renting</td>
+        </tr>
+        <tr>
+            <td><strong>Remote Workers</strong></td>
+            <td>28-40, Tech/Finance</td>
+            <td>Need flexibility, quality housing</td>
+            <td>Furnished options, flexible terms</td>
+        </tr>
+        <tr>
+            <td><strong>Empty Nesters</strong></td>
+            <td>50+, Downsizing</td>
+            <td>Don't want maintenance hassle</td>
+            <td>Full-service lifestyle</td>
+        </tr>
+        <tr>
+            <td><strong>Recent Grads</strong></td>
+            <td>22-27, Entry-level</td>
+            <td>No credit, high deposits</td>
+            <td>Alternative qualification, low upfront</td>
+        </tr>
+    </table>
+
+    <div class="page-break"></div>
+
+    <h2>Traction & Validation</h2>
+
+    <div class="traction-box">
+        <h3 style="margin-top: 0; color: #059669;">Current Business Metrics</h3>
+        
+        <div class="strategy-grid">
+            <div>
+                <h4>Revenue Metrics</h4>
+                <ul>
+                    <li>Annual Recurring Revenue: <strong>$24M</strong></li>
+                    <li>Monthly growth rate: <strong>3%</strong></li>
+                    <li>Gross margin: <strong>65%</strong></li>
+                    <li>EBITDA: <strong>$3.6M</strong> (15% margin)</li>
+                    <li>LTV:CAC ratio: <strong>3.2:1</strong></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4>Operational Metrics</h4>
+                <ul>
+                    <li>Portfolio: <strong>1,000 units</strong></li>
+                    <li>Occupancy rate: <strong>92%</strong></li>
+                    <li>Average tenant stay: <strong>18 months</strong></li>
+                    <li>NPS Score: <strong>42</strong></li>
+                    <li>Organic growth: <strong>40% of new leases</strong></li>
+                </ul>
+            </div>
+        </div>
+        
+        <h4 style="margin-top: 30px;">Early Validation of New Model</h4>
+        <ul>
+            <li>✅ <strong>50 pilot users</strong> signed up for deposit alternative in first week</li>
+            <li>✅ <strong>25% adoption rate</strong> for renter's insurance (vs. 10% industry avg)</li>
+            <li>✅ <strong>$50K in furniture partnership revenue</strong> from 10 test units</li>
+            <li>✅ <strong>3,000 email signups</strong> from single Reddit post test</li>
+            <li>✅ <strong>LOIs signed</strong> with Obligo (deposits) and Lemonade (insurance)</li>
+        </ul>
+    </div>
+
+    <div class="page-break"></div>
+
+    <h2>The Solution: Platform Business Model</h2>
+
+    <div class="revenue-model">
+        <h2 style="color: white; border: none;">Three Revenue Engines</h2>
+        
+        <div class="revenue-stream">
+            <h4 style="color: white; margin-top: 0;">1. Core Rental Business ($24M → $30M)</h4>
+            <ul style="font-size: 16px;">
+                <li>Increase rents 5% annually through premium positioning</li>
+                <li>Reduce vacancy from 8% to 3% with better marketing</li>
+                <li>Expand portfolio by 25% with same capital (better terms)</li>
+            </ul>
+        </div>
+        
+        <div class="revenue-stream">
+            <h4 style="color: white; margin-top: 0;">2. Financial Services Platform ($0 → $4M)</h4>
+            <ul style="font-size: 16px;">
+                <li><strong>Deposit Alternative:</strong> $50/month × 500 units = $300K/year</li>
+                <li><strong>Renter's Insurance:</strong> $60/month × 400 units = $288K/year</li>
+                <li><strong>Rent Financing:</strong> 2.5% of $10M volume = $250K/year</li>
+                <li><strong>Future:</strong> Credit cards, auto insurance, wealth products</li>
+            </ul>
+        </div>
+        
+        <div class="revenue-stream">
+            <h4 style="color: white; margin-top: 0;">3. Marketplace & Partnerships ($0 → $2M)</h4>
+            <ul style="font-size: 16px;">
+                <li><strong>Furniture Partnerships:</strong> 20% commission = $500K/year</li>
+                <li><strong>Lead Generation:</strong> Sell qualified leads = $300K/year</li>
+                <li><strong>Corporate Housing:</strong> Premium B2B contracts = $700K/year</li>
+                <li><strong>Content/Media:</strong> Sponsored content = $500K/year</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <h2>Growth Strategy: Viral Marketing Engines</h2>
+
+    <h3>Our Secret Weapons for 10x Growth</h3>
+
+    <div class="timeline-section">
+        <div class="phase-box">
+            <h5 style="color: #3b82f6; margin-top: 0;">1. Reddit Domination Strategy</h5>
+            <p><em>Investment: $1,100/month → Returns: $50K/month</em></p>
+            <ul>
+                <li>Target 50+ city and lifestyle subreddits</li>
+                <li>Create 100+ helpful posts monthly</li>
+                <li>Drive 50,000 monthly visitors</li>
+                <li>Convert at 2% = 1,000 leads/month</li>
+                <li><strong>Proven:</strong> Test post got 3,000 emails</li>
+            </ul>
+        </div>
+        
+        <div class="phase-box">
+            <h5 style="color: #3b82f6; margin-top: 0;">2. Viral Sweepstakes Machine</h5>
+            <p><em>"Free Rent for a Year" Campaign</em></p>
+            <ul>
+                <li>$60K prize → 500,000 email signups</li>
+                <li>Viral coefficient of 1.4 (each person brings 1.4 more)</li>
+                <li>Convert 1% to leases = 5,000 qualified prospects</li>
+                <li>Run quarterly with different themes</li>
+                <li><strong>ROI: 83x on investment</strong></li>
+            </ul>
+        </div>
+        
+        <div class="phase-box">
+            <h5 style="color: #3b82f6; margin-top: 0;">3. Influencer Content Programs</h5>
+            
+            <p><strong>Digital Nomad World Tour ($285K investment)</strong></p>
+            <ul>
+                <li>5 micro-influencers, 12 cities, 12 months</li>
+                <li>3,000+ pieces of content created</li>
+                <li>30M+ impressions expected</li>
+            </ul>
+            
+            <p><strong>30 Days of Surprises ($275K investment)</strong></p>
+            <ul>
+                <li>Daily resident upgrades worth $2-10K</li>
+                <li>Film reactions, create viral content</li>
+                <li>100M+ views projected</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <h2>Financial Projections</h2>
+
+    <h3>Path to $36M ARR in 24 Months</h3>
+
+    <table>
+        <tr>
+            <th>Revenue Stream</th>
+            <th>Current</th>
+            <th>6 Months</th>
+            <th>12 Months</th>
+            <th>18 Months</th>
+            <th>24 Months</th>
+        </tr>
+        <tr>
+            <td><strong>Core Rentals</strong></td>
+            <td>$24.0M</td>
+            <td>$25.0M</td>
+            <td>$26.5M</td>
+            <td>$28.0M</td>
+            <td>$30.0M</td>
+        </tr>
+        <tr>
+            <td>Financial Services</td>
+            <td>$0</td>
+            <td>$0.5M</td>
+            <td>$1.5M</td>
+            <td>$2.5M</td>
+            <td>$4.0M</td>
+        </tr>
+        <tr>
+            <td>Marketplace</td>
+            <td>$0</td>
+            <td>$0.2M</td>
+            <td>$0.5M</td>
+            <td>$1.0M</td>
+            <td>$2.0M</td>
+        </tr>
+        <tr style="background: #ecfdf5;">
+            <td><strong>Total ARR</strong></td>
+            <td><strong>$24.0M</strong></td>
+            <td><strong>$25.7M</strong></td>
+            <td><strong>$28.5M</strong></td>
+            <td><strong>$31.5M</strong></td>
+            <td><strong>$36.0M</strong></td>
+        </tr>
+        <tr>
+            <td>Growth Rate</td>
+            <td>-</td>
+            <td>7%</td>
+            <td>19%</td>
+            <td>31%</td>
+            <td>50%</td>
+        </tr>
+    </table>
+
+    <h3>Unit Economics</h3>
+
+    <div class="financial-projection">
+        <table>
+            <tr>
+                <th>Metric</th>
+                <th>Current</th>
+                <th>With Platform</th>
+                <th>Improvement</th>
+            </tr>
+            <tr>
+                <td>Revenue per Unit/Month</td>
+                <td>$2,000</td>
+                <td>$2,500</td>
+                <td>+25%</td>
+            </tr>
+            <tr>
+                <td>Platform Revenue per Unit</td>
+                <td>$0</td>
+                <td>$500</td>
+                <td>+∞</td>
+            </tr>
+            <tr>
+                <td>Gross Margin</td>
+                <td>65%</td>
+                <td>72%</td>
+                <td>+7pp</td>
+            </tr>
+            <tr>
+                <td>CAC</td>
+                <td>$2,500</td>
+                <td>$1,000</td>
+                <td>-60%</td>
+            </tr>
+            <tr>
+                <td>LTV</td>
+                <td>$8,000</td>
+                <td>$15,000</td>
+                <td>+88%</td>
+            </tr>
+            <tr>
+                <td>LTV:CAC</td>
+                <td>3.2:1</td>
+                <td>15:1</td>
+                <td>+369%</td>
+            </tr>
+            <tr>
+                <td>Payback Period</td>
+                <td>15 months</td>
+                <td>3 months</td>
+                <td>-80%</td>
+            </tr>
+        </table>
+    </div>
+
+    <h3>Monthly Burn & Runway</h3>
+
+    <table>
+        <tr>
+            <th>Category</th>
+            <th>Monthly Cost</th>
+            <th>Notes</th>
+        </tr>
+        <tr>
+            <td>Current Operating Profit</td>
+            <td style="color: green;">+$300K</td>
+            <td>Business is profitable</td>
+        </tr>
+        <tr>
+            <td>New Tech Team (4 people)</td>
+            <td>-$60K</td>
+            <td>CTO, 2 engineers, designer</td>
+        </tr>
+        <tr>
+            <td>Marketing Expansion</td>
+            <td>-$30K</td>
+            <td>Content, paid ads, influencers</td>
+        </tr>
+        <tr>
+            <td>Platform Development</td>
+            <td>-$20K</td>
+            <td>AWS, tools, integrations</td>
+        </tr>
+        <tr>
+            <td><strong>Net Burn Rate</strong></td>
+            <td style="color: green;"><strong>+$190K</strong></td>
+            <td><strong>Still profitable while building</strong></td>
+        </tr>
+    </table>
+    
+    <div class="highlight-box">
+        <p><strong>Key Insight:</strong> We're profitable TODAY. The $2.5M isn't to extend runway - it's to accelerate growth and build technology that creates a 10x more valuable company.</p>
+    </div>
+
+    <div class="page-break"></div>
+
+    <h2>Cap Table & Investment Terms</h2>
+
+    <div class="cap-table">
+        <h3 style="margin-top: 0;">Current Cap Table</h3>
+        
+        <table>
+            <tr>
+                <th>Shareholder</th>
+                <th>Shares</th>
+                <th>%</th>
+                <th>Investment</th>
+            </tr>
+            <tr>
+                <td>Founder/CEO</td>
+                <td>6,000,000</td>
+                <td>60%</td>
+                <td>Sweat + $100K</td>
+            </tr>
+            <tr>
+                <td>Co-founder/COO</td>
+                <td>2,000,000</td>
+                <td>20%</td>
+                <td>Sweat</td>
+            </tr>
+            <tr>
+                <td>Early Angel Investors</td>
+                <td>1,000,000</td>
+                <td>10%</td>
+                <td>$500K</td>
+            </tr>
+            <tr>
+                <td>Employee Option Pool</td>
+                <td>1,000,000</td>
+                <td>10%</td>
+                <td>-</td>
+            </tr>
+            <tr style="background: #e0e7ff;">
+                <td><strong>Total Pre-Seed</strong></td>
+                <td><strong>10,000,000</strong></td>
+                <td><strong>100%</strong></td>
+                <td><strong>$600K</strong></td>
+            </tr>
+        </table>
+
+        <h3 style="margin-top: 40px;">Post-Seed Cap Table (Proposed)</h3>
+        
+        <table>
+            <tr>
+                <th>Shareholder</th>
+                <th>Shares</th>
+                <th>%</th>
+                <th>Investment</th>
+            </tr>
+            <tr>
+                <td>Founder/CEO</td>
+                <td>6,000,000</td>
+                <td>48%</td>
+                <td>$100K</td>
+            </tr>
+            <tr>
+                <td>Co-founder/COO</td>
+                <td>2,000,000</td>
+                <td>16%</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>Early Angels</td>
+                <td>1,000,000</td>
+                <td>8%</td>
+                <td>$500K</td>
+            </tr>
+            <tr>
+                <td>Employee Options</td>
+                <td>1,000,000</td>
+                <td>8%</td>
+                <td>-</td>
+            </tr>
+            <tr style="background: #c7f0db;">
+                <td><strong>Seed Investors (NEW)</strong></td>
+                <td><strong>2,500,000</strong></td>
+                <td><strong>20%</strong></td>
+                <td><strong>$2,500,000</strong></td>
+            </tr>
+            <tr style="background: #e0e7ff;">
+                <td><strong>Total Post-Seed</strong></td>
+                <td><strong>12,500,000</strong></td>
+                <td><strong>100%</strong></td>
+                <td><strong>$3,100,000</strong></td>
+            </tr>
+        </table>
+        
+        <div style="margin-top: 30px; padding: 20px; background: white; border-radius: 10px;">
+            <h4 style="margin-top: 0;">Key Terms</h4>
+            <ul>
+                <li><strong>Pre-money valuation:</strong> $10M</li>
+                <li><strong>Investment amount:</strong> $2.5M</li>
+                <li><strong>Post-money valuation:</strong> $12.5M</li>
+                <li><strong>Price per share:</strong> $1.00</li>
+                <li><strong>Liquidation preference:</strong> 1x non-participating</li>
+                <li><strong>Board seats:</strong> 5 total (2 founders, 2 investors, 1 independent)</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <h2>Use of Funds</h2>
+
+    <div class="use-of-funds">
+        <h3 style="color: white; margin-top: 0;">$2.5M Seed Round Allocation</h3>
+        
+        <table style="background: rgba(255,255,255,0.1); color: white;">
+            <tr>
+                <th style="background: transparent; color: white;">Category</th>
+                <th style="background: transparent; color: white;">Amount</th>
+                <th style="background: transparent; color: white;">Purpose</th>
+                <th style="background: transparent; color: white;">Expected ROI</th>
+            </tr>
+            <tr style="background: transparent;">
+                <td><strong>Technology Platform (40%)</strong></td>
+                <td>$1,000,000</td>
+                <td>Build resident portal, mobile app, API integrations</td>
+                <td>Enable $4M platform revenue</td>
+            </tr>
+            <tr style="background: transparent;">
+                <td><strong>Growth Marketing (30%)</strong></td>
+                <td>$750,000</td>
+                <td>Sweepstakes, influencer campaigns, content creation</td>
+                <td>Acquire 5,000 residents</td>
+            </tr>
+            <tr style="background: transparent;">
+                <td><strong>Team Building (20%)</strong></td>
+                <td>$500,000</td>
+                <td>CTO, engineers, growth marketer</td>
+                <td>Build scalable systems</td>
+            </tr>
+            <tr style="background: transparent;">
+                <td><strong>Working Capital (10%)</strong></td>
+                <td>$250,000</td>
+                <td>Partner guarantees, regulatory, reserves</td>
+                <td>Risk mitigation</td>
+            </tr>
+        </table>
+        
+        <div style="margin-top: 30px; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 10px;">
+            <h4 style="color: white;">12-Month Milestones</h4>
+            <ul>
+                <li>✓ Launch financial services platform (Month 3)</li>
+                <li>✓ 50,000 monthly website visitors (Month 6)</li>
+                <li>✓ 1,500 total units under management (Month 9)</li>
+                <li>✓ $28.5M ARR achieved (Month 12)</li>
+                <li>✓ Series A ready at $50M valuation (Month 12)</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <h2>Go-to-Market Strategy</h2>
+
+    <h3>90-Day Launch Plan</h3>
+
+    <div class="timeline-section">
+        <h4>Days 1-30: Foundation</h4>
+        <div class="phase-box">
+            <ul>
+                <li>Launch deposit alternative & insurance (immediate revenue)</li>
+                <li>Deploy Reddit marketing strategy (50 subreddits)</li>
+                <li>Begin hiring CTO and technical team</li>
+                <li>Target: $50K new monthly revenue</li>
+            </ul>
+        </div>
+        
+        <h4>Days 31-60: Scale</h4>
+        <div class="phase-box">
+            <ul>
+                <li>Launch "Free Rent for a Year" sweepstakes</li>
+                <li>Implement furniture partnerships</li>
+                <li>Release mobile app MVP</li>
+                <li>Target: $150K new monthly revenue</li>
+            </ul>
+        </div>
+        
+        <h4>Days 61-90: Optimize</h4>
+        <div class="phase-box">
+            <ul>
+                <li>Launch Digital Nomad influencer program</li>
+                <li>A/B test all conversion funnels</li>
+                <li>Prepare Series A deck</li>
+                <li>Target: $250K new monthly revenue</li>
+            </ul>
+        </div>
+    </div>
+
+    <h3>Customer Acquisition Channels</h3>
+
+    <table>
+        <tr>
+            <th>Channel</th>
+            <th>Cost per Lead</th>
+            <th>Conversion Rate</th>
+            <th>CAC</th>
+            <th>Monthly Volume</th>
+        </tr>
+        <tr>
+            <td>Reddit Marketing</td>
+            <td>$0.50</td>
+            <td>4%</td>
+            <td>$12.50</td>
+            <td>2,000 leads</td>
+        </tr>
+        <tr>
+            <td>Viral Sweepstakes</td>
+            <td>$0.20</td>
+            <td>2%</td>
+            <td>$10</td>
+            <td>10,000 leads</td>
+        </tr>
+        <tr>
+            <td>Influencer Content</td>
+            <td>$2</td>
+            <td>5%</td>
+            <td>$40</td>
+            <td>500 leads</td>
+        </tr>
+        <tr>
+            <td>Referrals</td>
+            <td>$5</td>
+            <td>25%</td>
+            <td>$20</td>
+            <td>200 leads</td>
+        </tr>
+        <tr>
+            <td>Organic/SEO</td>
+            <td>$0</td>
+            <td>3%</td>
+            <td>$0</td>
+            <td>1,000 leads</td>
+        </tr>
+        <tr style="background: #ecfdf5;">
+            <td><strong>Blended</strong></td>
+            <td><strong>$0.48</strong></td>
+            <td><strong>3.2%</strong></td>
+            <td><strong>$15</strong></td>
+            <td><strong>13,700 leads</strong></td>
+        </tr>
+    </table>
+
+    <div class="page-break"></div>
+
+    <h2>Competitive Advantages</h2>
+
+    <div class="competitive-advantage">
+        <h3 style="margin-top: 0;">Why We'll Win</h3>
+        
+        <div style="display: grid; grid-template-columns: 1fr; gap: 20px;">
+            <div style="padding: 20px; background: white; border-radius: 10px;">
+                <h4 style="color: #f59e0b;">1. First-Mover in FinTech + PropTech</h4>
+                <p>No one else is building financial services specifically for renters. We'll own this category before competitors wake up.</p>
+            </div>
+            
+            <div style="padding: 20px; background: white; border-radius: 10px;">
+                <h4 style="color: #f59e0b;">2. Profitable Base Business</h4>
+                <p>Unlike typical startups, we're already profitable. We can be patient and strategic while competitors burn cash.</p>
+            </div>
+            
+            <div style="padding: 20px; background: white; border-radius: 10px;">
+                <h4 style="color: #f59e0b;">3. Viral Marketing DNA</h4>
+                <p>Our Reddit strategy, sweepstakes, and content programs create organic growth loops that compound over time.</p>
+            </div>
+            
+            <div style="padding: 20px; background: white; border-radius: 10px;">
+                <h4 style="color: #f59e0b;">4. Network Effects</h4>
+                <p>Each resident makes the platform more valuable through referrals, content, and data. Winner-take-all dynamics.</p>
+            </div>
+            
+            <div style="padding: 20px; background: white; border-radius: 10px;">
+                <h4 style="color: #f59e0b;">5. High Switching Costs</h4>
+                <p>Once residents use our financial products and community features, they stay 3x longer than industry average.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <h2>Team</h2>
+
+    <h3>Current Leadership</h3>
+
+    <div class="investment-highlights">
+        <div class="strategy-grid">
+            <div>
+                <h4>CEO & Co-Founder</h4>
+                <ul>
+                    <li>10 years in real estate tech</li>
+                    <li>Previously sold proptech startup for $15M</li>
+                    <li>Built and managed 2,000+ unit portfolio</li>
+                    <li>Domain expertise in luxury rentals</li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4>COO & Co-Founder</h4>
+                <ul>
+                    <li>Former VP Operations at Compass</li>
+                    <li>Scaled ops from 100 to 5,000 agents</li>
+                    <li>Expert in marketplace dynamics</li>
+                    <li>Harvard MBA</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <h3>Key Hires with Seed Funding</h3>
+
+    <table>
+        <tr>
+            <th>Role</th>
+            <th>Background Needed</th>
+            <th>Comp Range</th>
+            <th>Start Date</th>
+        </tr>
+        <tr>
+            <td><strong>CTO</strong></td>
+            <td>FinTech platform experience, API expert</td>
+            <td>$200K + 2% equity</td>
+            <td>Month 1</td>
+        </tr>
+        <tr>
+            <td><strong>VP Engineering</strong></td>
+            <td>Scaled consumer apps, mobile experience</td>
+            <td>$180K + 1% equity</td>
+            <td>Month 2</td>
+        </tr>
+        <tr>
+            <td><strong>Head of Growth</strong></td>
+            <td>Viral marketing, content strategy</td>
+            <td>$150K + 1% equity</td>
+            <td>Month 2</td>
+        </tr>
+        <tr>
+            <td><strong>Head of FinTech</strong></td>
+            <td>Launched financial products</td>
+            <td>$170K + 1% equity</td>
+            <td>Month 3</td>
+        </tr>
+    </table>
+
+    <div class="highlight-box">
+        <h4 style="margin-top: 0;">Advisory Board</h4>
+        <ul>
+            <li><strong>Former CPO at Airbnb</strong> - Marketplace expertise</li>
+            <li><strong>Co-founder of Rhino</strong> - FinTech + PropTech insights</li>
+            <li><strong>CMO of Robinhood</strong> - Viral marketing playbook</li>
+            <li><strong>Former President of Zillow Rentals</strong> - Industry connections</li>
+        </ul>
+    </div>
+
+    <div class="page-break"></div>
+
+    <h2>Risk Analysis</h2>
+
+    <div class="risk-mitigation">
+        <h3 style="margin-top: 0;">Key Risks & Mitigation</h3>
+        
+        <table>
+            <tr>
+                <th>Risk</th>
+                <th>Probability</th>
+                <th>Impact</th>
+                <th>Mitigation</th>
+            </tr>
+            <tr>
+                <td>Regulatory (FinTech)</td>
+                <td>Medium</td>
+                <td>High</td>
+                <td>Partner with licensed providers, legal review</td>
+            </tr>
+            <tr>
+                <td>Market downturn</td>
+                <td>Low</td>
+                <td>Medium</td>
+                <td>Profitable base, diverse revenue, flexible costs</td>
+            </tr>
+            <tr>
+                <td>Competition copies</td>
+                <td>High</td>
+                <td>Low</td>
+                <td>Move fast, build moats, exclusive partnerships</td>
+            </tr>
+            <tr>
+                <td>Tech development delays</td>
+                <td>Medium</td>
+                <td>Medium</td>
+                <td>MVP approach, use existing tools first</td>
+            </tr>
+            <tr>
+                <td>Partner dependency</td>
+                <td>Low</td>
+                <td>Medium</td>
+                <td>Multiple partners per category</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="page-break"></div>
+
+    <h2>Exit Strategy</h2>
+
+    <h3>Multiple Paths to Liquidity</h3>
+
+    <div class="roi-showcase">
+        <h3 style="color: white; margin-top: 0;">Expected Outcomes</h3>
+        
+        <table style="background: rgba(255,255,255,0.1); color: white;">
+            <tr>
+                <th style="background: transparent; color: white;">Exit Path</th>
+                <th style="background: transparent; color: white;">Timeline</th>
+                <th style="background: transparent; color: white;">Valuation Range</th>
+                <th style="background: transparent; color: white;">Potential Buyers</th>
+            </tr>
+            <tr style="background: transparent;">
+                <td><strong>Strategic Acquisition</strong></td>
+                <td>3-5 years</td>
+                <td>$150-250M</td>
+                <td>Zillow, CoStar, Realpage</td>
+            </tr>
+            <tr style="background: transparent;">
+                <td><strong>FinTech Acquisition</strong></td>
+                <td>3-4 years</td>
+                <td>$200-300M</td>
+                <td>SoFi, Chime, PayPal</td>
+            </tr>
+            <tr style="background: transparent;">
+                <td><strong>PE Roll-up</strong></td>
+                <td>2-3 years</td>
+                <td>$100-150M</td>
+                <td>Blackstone, Greystar</td>
+            </tr>
+            <tr style="background: transparent;">
+                <td><strong>Series B → IPO</strong></td>
+                <td>5-7 years</td>
+                <td>$500M+</td>
+                <td>Public markets</td>
+            </tr>
+        </table>
+        
+        <div class="roi-number" style="margin-top: 40px;">Target: 10-15x Return</div>
+        <p style="font-size: 24px;">$2.5M → $25-40M in 3-5 years</p>
+    </div>
+
+    <div class="page-break"></div>
+
+    <h2>Why Now?</h2>
+
+    <div class="investment-highlights">
+        <h3 style="margin-top: 0;">Perfect Timing for This Investment</h3>
+        
+        <ol style="font-size: 18px;">
+            <li><strong>Remote work is permanent:</strong> 30% of workers now location-flexible, need quality flexible housing</li>
+            
+            <li><strong>Millennials can't afford homes:</strong> Average home price up 40%, creating lifetime renters</li>
+            
+            <li><strong>FinTech infrastructure ready:</strong> Banking-as-a-Service makes embedded finance possible</li>
+            
+            <li><strong>Viral marketing works:</strong> TikTok and Reddit drive massive organic growth</li>
+            
+            <li><strong>Competitors are asleep:</strong> Traditional apartments still use 1990s playbook</li>
+            
+            <li><strong>Capital efficient timing:</strong> We can build what cost $10M in 2019 for $1M today</li>
+            
+            <li><strong>Exit markets heating up:</strong> PropTech M&A up 300% in last 18 months</li>
+        </ol>
+    </div>
+
+    <div class="traction-box">
+        <h3 style="margin-top: 0;">The Ask</h3>
+        
+        <div style="font-size: 20px; line-height: 1.8;">
+            <p>We're raising <strong>$2.5M</strong> to transform our profitable $24M rental business into a $100M+ platform.</p>
+            
+            <p>With your investment, we'll:</p>
+            <ul>
+                <li>Build technology that creates recurring platform revenue</li>
+                <li>Launch viral marketing campaigns that drive 10x growth</li>
+                <li>Prove the model with 1,000 units before national expansion</li>
+                <li>Position for Series A at $50M+ valuation in 12 months</li>
+            </ul>
+            
+            <p style="margin-top: 30px;"><strong>Join us in building the future of rental living.</strong></p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p><strong>LUXURYAPARTMENTS.COM</strong><br>
+        Building the Operating System for Modern Renters<br>
+        <br>
+        CONFIDENTIAL - Seed Investment Opportunity<br>
+        <br>
+        Contact: founders@luxuryapartments.com | (555) 123-4567<br>
+        www.luxuryapartments.com</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,1781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuxuryApartments.com - Strategic Plan 2025-2028</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-coral: #FF6B6B;
+            --primary-blue: #4DABF7;
+            --primary-purple: #9775FA;
+            --primary-green: #51CF66;
+            --primary-yellow: #FFD43B;
+            --primary-orange: #FF922B;
+            --primary-pink: #FF6B9D;
+            --primary-teal: #20C997;
+            --light-coral: #FFF0F0;
+            --light-blue: #E7F5FF;
+            --light-purple: #F3F0FF;
+            --light-green: #EBFBEE;
+            --light-yellow: #FFF9DB;
+            --light-orange: #FFF4E6;
+            --light-pink: #FFEBF0;
+            --light-teal: #E3FAFC;
+            --text-dark: #212529;
+            --text-gray: #495057;
+            --text-light: #868E96;
+            --border-light: #E9ECEF;
+            --bg-white: #FFFFFF;
+            --bg-light: #F8F9FA;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+            background: linear-gradient(180deg, #FFFFFF 0%, #F8F9FA 100%);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Decorative Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, var(--light-blue) 0%, transparent 70%);
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -50%;
+            left: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, var(--light-coral) 0%, transparent 70%);
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        /* Navigation */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 280px;
+            background: var(--bg-white);
+            border-right: 1px solid var(--border-light);
+            padding: 40px 24px;
+            overflow-y: auto;
+            z-index: 1000;
+            transform: translateX(0);
+            transition: transform 0.3s ease;
+            box-shadow: var(--shadow-md);
+        }
+
+        .sidebar.hidden {
+            transform: translateX(-280px);
+        }
+
+        .sidebar-toggle {
+            position: fixed;
+            left: 20px;
+            top: 20px;
+            z-index: 1001;
+            background: var(--primary-blue);
+            border: none;
+            color: white;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        .nav-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 32px;
+            color: var(--text-dark);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-item {
+            display: block;
+            padding: 14px 20px;
+            margin-bottom: 8px;
+            color: var(--text-gray);
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border: 2px solid transparent;
+        }
+
+        .nav-item:hover {
+            background: var(--light-blue);
+            color: var(--primary-blue);
+            transform: translateX(4px);
+        }
+
+        .nav-item.active {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 280px;
+            padding: 60px 80px;
+            max-width: 1400px;
+            position: relative;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 100px 20px;
+            margin-bottom: 80px;
+            background: white;
+            border-radius: 32px;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-coral), var(--primary-blue), var(--primary-purple), var(--primary-green));
+        }
+
+        .logo {
+            font-size: 3rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            color: var(--primary-coral);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Sections */
+        .section {
+            margin-bottom: 100px;
+            scroll-margin-top: 40px;
+        }
+
+        .section-header {
+            margin-bottom: 48px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 32px;
+            color: var(--text-dark);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: var(--primary-blue);
+        }
+
+        h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--primary-purple);
+        }
+
+        p {
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: var(--text-gray);
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 32px;
+            border: 1px solid var(--border-light);
+            transition: all 0.3s ease;
+            position: relative;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-coral {
+            border-left: 4px solid var(--primary-coral);
+            background: linear-gradient(135deg, white, var(--light-coral));
+        }
+
+        .card-blue {
+            border-left: 4px solid var(--primary-blue);
+            background: linear-gradient(135deg, white, var(--light-blue));
+        }
+
+        .card-purple {
+            border-left: 4px solid var(--primary-purple);
+            background: linear-gradient(135deg, white, var(--light-purple));
+        }
+
+        .card-green {
+            border-left: 4px solid var(--primary-green);
+            background: linear-gradient(135deg, white, var(--light-green));
+        }
+
+        /* Grid Layouts */
+        .grid {
+            display: grid;
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .grid-4 {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        /* Stats */
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin: 60px 0;
+        }
+
+        .stat-box {
+            background: white;
+            border-radius: 20px;
+            padding: 32px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+            border: 2px solid transparent;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: var(--primary-blue);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-coral), var(--primary-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            font-weight: 600;
+        }
+
+        /* Lists */
+        ul, ol {
+            margin: 24px 0;
+            padding-left: 28px;
+        }
+
+        li {
+            margin-bottom: 12px;
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 20px;
+            background: var(--bg-light);
+            border-radius: 12px;
+            margin-bottom: 12px;
+            border-left: 4px solid var(--primary-green);
+            transition: all 0.2s ease;
+        }
+
+        .feature-list li:hover {
+            background: white;
+            transform: translateX(8px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 40px 0;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        th {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            padding: 18px;
+            text-align: left;
+            font-weight: 600;
+            color: white;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            padding: 18px;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-gray);
+        }
+
+        tr:hover {
+            background: var(--light-blue);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 60px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 40px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--primary-coral), var(--primary-blue), var(--primary-purple));
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 100px;
+            margin-bottom: 60px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 28px;
+            top: 0;
+            width: 28px;
+            height: 28px;
+            background: white;
+            border: 4px solid var(--primary-blue);
+            border-radius: 50%;
+            box-shadow: var(--shadow-md);
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 32px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-light);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateX(8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .timeline-date {
+            color: var(--primary-coral);
+            font-weight: 700;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+
+        /* Charts Container */
+        .chart-container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 48px 0;
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 24px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+
+        .badge-primary {
+            background: var(--light-blue);
+            color: var(--primary-blue);
+        }
+
+        .badge-success {
+            background: var(--light-green);
+            color: var(--primary-green);
+        }
+
+        .badge-warning {
+            background: var(--light-yellow);
+            color: var(--primary-orange);
+        }
+
+        .badge-coral {
+            background: var(--light-coral);
+            color: var(--primary-coral);
+        }
+
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            padding: 20px 48px;
+            background: linear-gradient(135deg, var(--primary-coral), var(--primary-orange));
+            color: white;
+            text-decoration: none;
+            border-radius: 16px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-md);
+            margin: 32px 0;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            color: white;
+            padding: 48px;
+            border-radius: 24px;
+            text-align: center;
+            margin: 60px 0;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .highlight-box h2 {
+            color: white;
+            margin-bottom: 24px;
+        }
+
+        .highlight-box p {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 1.2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .sidebar {
+                transform: translateX(-280px);
+            }
+
+            .sidebar.visible {
+                transform: translateX(0);
+            }
+
+            .sidebar-toggle {
+                display: flex;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 40px 30px;
+            }
+
+            .grid-2, .grid-3, .grid-4 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .main-content {
+                padding: 20px;
+            }
+
+            .stat-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                padding: 24px;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .slide-in {
+            animation: slideIn 0.6s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar Toggle -->
+    <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+        <div class="nav-title">📋 STRATEGIC PLAN 2025-2028</div>
+        <a href="#executive-summary" class="nav-item active">Executive Summary</a>
+        <a href="#market-opportunity" class="nav-item">Market Opportunity</a>
+        <a href="#business-model" class="nav-item">Business Model</a>
+        <a href="#product-roadmap" class="nav-item">Product Roadmap</a>
+        <a href="#go-to-market" class="nav-item">Go-to-Market Strategy</a>
+        <a href="#team-building" class="nav-item">Team & Organization</a>
+        <a href="#financial-projections" class="nav-item">Financial Projections</a>
+        <a href="#funding-strategy" class="nav-item">Funding Strategy</a>
+        <a href="#milestones" class="nav-item">Key Milestones</a>
+        <a href="#risk-mitigation" class="nav-item">Risk Mitigation</a>
+        <a href="#path-to-exit" class="nav-item">Path to $4B Exit</a>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="header fade-in">
+            <div class="logo">LUXURYAPARTMENTS.COM</div>
+            <div class="tagline">Comprehensive Strategic Plan 2025-2028</div>
+            <p class="subtitle">
+                The Premium PropTech Platform for Luxury Apartment Rentals
+            </p>
+        </header>
+
+        <!-- Executive Summary -->
+        <section id="executive-summary" class="section fade-in">
+            <div class="section-header">
+                <h1>✨ Executive Summary</h1>
+            </div>
+            
+            <div class="stat-grid">
+                <div class="stat-box">
+                    <div class="stat-number">$18.2B</div>
+                    <div class="stat-label">US Market</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">$145B</div>
+                    <div class="stat-label">Global TAM</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">8.3%</div>
+                    <div class="stat-label">CAGR</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">$422M</div>
+                    <div class="stat-label">Year 5 Revenue</div>
+                </div>
+            </div>
+
+            <div class="card card-blue">
+                <h3>🎯 Vision</h3>
+                <p>Become the definitive global platform for luxury apartment rentals ($5,000+ monthly), capturing the $18.2B US market and expanding to the $145B global opportunity.</p>
+            </div>
+
+            <div class="card card-coral">
+                <h3>💎 Unique Value Proposition</h3>
+                <p>LuxuryApartments.com leverages a premium domain asset (valued at $5-10M floor) to create an exclusive marketplace that reduces vacancy periods by 60%, delivers 156% ROI to property managers, and expands from traditional marketplace revenue to a comprehensive luxury ecosystem generating $422M by Year 5.</p>
+            </div>
+
+            <div class="card card-green">
+                <h3>🚀 Key Success Factors</h3>
+                <ul class="feature-list">
+                    <li>Premium domain providing 40% CAC advantage and immediate brand authority</li>
+                    <li>Focus on underserved luxury segment (8.3% CAGR through 2029)</li>
+                    <li>Multiple revenue streams beyond traditional listings</li>
+                    <li>Strategic partnerships with Related, Greystar, Equity Residential</li>
+                    <li>Proven comparable exits (Apartments.com: $7.2B to CoStar)</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Market Opportunity -->
+        <section id="market-opportunity" class="section slide-in">
+            <div class="section-header">
+                <h1>🌍 Market Opportunity & Strategic Positioning</h1>
+            </div>
+
+            <div class="grid grid-2">
+                <div class="card card-purple">
+                    <h3>📊 Market Size & Growth</h3>
+                    <ul>
+                        <li><strong>US TAM:</strong> $18.2B luxury rental market</li>
+                        <li><strong>Global TAM:</strong> $145B (8x expansion opportunity)</li>
+                        <li><strong>Growth Rate:</strong> 8.3% CAGR through 2029</li>
+                        <li><strong>Target Segment:</strong> 3.4M luxury renters, growing 15% annually</li>
+                    </ul>
+                </div>
+
+                <div class="card card-coral">
+                    <h3>🎯 Market Gap</h3>
+                    <ul>
+                        <li>No dedicated luxury-only platform exists</li>
+                        <li>Generic platforms dilute luxury brand positioning</li>
+                        <li>73% of luxury properties struggle finding qualified renters</li>
+                        <li>Average vacancy costs $15,000/month in lost revenue</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>⚡ Competitive Advantages</h3>
+                <div class="grid grid-3">
+                    <div>
+                        <h4>1. Domain Asset Value</h4>
+                        <ul>
+                            <li>Immediate brand credibility</li>
+                            <li>40% reduction in CAC</li>
+                            <li>10% exit premium</li>
+                            <li>$5-10M liquidation floor</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>2. Network Effects</h4>
+                        <ul>
+                            <li>Exclusive luxury inventory</li>
+                            <li>Premium renter attraction</li>
+                            <li>AI matching improvement</li>
+                            <li>Global mobility platform</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>3. Market Position</h4>
+                        <ul>
+                            <li>First-mover in luxury</li>
+                            <li>Strategic partnerships</li>
+                            <li>Technology leadership</li>
+                            <li>Brand recognition</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <canvas id="marketChart"></canvas>
+            </div>
+        </section>
+
+        <!-- Business Model -->
+        <section id="business-model" class="section slide-in">
+            <div class="section-header">
+                <h1>💰 Business Model & Revenue Strategy</h1>
+            </div>
+
+            <h2>Core Revenue Streams (Traditional)</h2>
+            <div class="grid grid-3">
+                <div class="card card-blue">
+                    <h4>📦 Subscription Revenue</h4>
+                    <div class="badge badge-primary">60% of revenue</div>
+                    <ul>
+                        <li>Basic: $500/month</li>
+                        <li>Professional: $1,500/month</li>
+                        <li>Enterprise: $3,500/month</li>
+                    </ul>
+                </div>
+
+                <div class="card card-coral">
+                    <h4>💳 Transaction Fees</h4>
+                    <div class="badge badge-coral">25% of revenue</div>
+                    <ul>
+                        <li>3.4% of lease value</li>
+                        <li>Express approval: $199</li>
+                        <li>Background checks: $75</li>
+                    </ul>
+                </div>
+
+                <div class="card card-green">
+                    <h4>📢 Marketing Services</h4>
+                    <div class="badge badge-success">15% of revenue</div>
+                    <ul>
+                        <li>Featured listings: $2,500/mo</li>
+                        <li>Virtual staging: $500/unit</li>
+                        <li>Photography: $1,000/session</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>Innovative Luxury Revenue Streams</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">🚀 Immediate Launch (30 days)</div>
+                        <h4>Quick Wins</h4>
+                        <ul>
+                            <li>Concierge Services: $10M revenue by Year 2</li>
+                            <li>Priority Placement: $5M additional revenue</li>
+                            <li>Express Approval: $2M from premium processing</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">⚡ 90-Day Rollouts</div>
+                        <h4>Platform Expansion</h4>
+                        <ul>
+                            <li>Payment Processing: 2.9% of all transactions</li>
+                            <li>Lease Insurance: $8M annual premiums</li>
+                            <li>Black Card Membership: $499/year</li>
+                            <li>Data Products: $15M from market insights</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">🌟 Strategic Initiatives (6+ months)</div>
+                        <h4>Ecosystem Development</h4>
+                        <ul>
+                            <li>Furniture Rental Partnership: $25M by Year 3</li>
+                            <li>International Relocation: $50M from global moves</li>
+                            <li>AI Luxury Advisor: $1,999/month enterprise</li>
+                            <li>Lease Securitization: $100M+ opportunity</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-grid">
+                <div class="stat-box">
+                    <div class="stat-number">$102M</div>
+                    <div class="stat-label">Traditional Model</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">$422M</div>
+                    <div class="stat-label">With Luxury</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">313%</div>
+                    <div class="stat-label">Revenue Increase</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">82%</div>
+                    <div class="stat-label">Gross Margin</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Roadmap -->
+        <section id="product-roadmap" class="section slide-in">
+            <div class="section-header">
+                <h1>🛠️ Product & Technology Roadmap</h1>
+            </div>
+
+            <div class="grid grid-2">
+                <div class="card card-blue">
+                    <h3>🎯 MVP Features (Q1 2025)</h3>
+                    <ul class="feature-list">
+                        <li>Advanced search & filtering</li>
+                        <li>HD photo galleries & virtual tours</li>
+                        <li>Verified luxury amenities database</li>
+                        <li>Instant messaging system</li>
+                        <li>Application management</li>
+                        <li>Basic verification workflow</li>
+                    </ul>
+                </div>
+
+                <div class="card card-purple">
+                    <h3>💫 Core Platform (Q2-Q3 2025)</h3>
+                    <ul class="feature-list">
+                        <li>AI-powered matching algorithm</li>
+                        <li>Augmented reality previews</li>
+                        <li>Neighborhood lifestyle scoring</li>
+                        <li>Integrated background checks</li>
+                        <li>Digital lease signing</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card card-green">
+                <h3>🚀 Advanced Features (Q4 2025+)</h3>
+                <div class="grid grid-3">
+                    <ul>
+                        <li>Predictive pricing models</li>
+                        <li>Smart home integration</li>
+                    </ul>
+                    <ul>
+                        <li>Concierge marketplace</li>
+                        <li>Blockchain verification</li>
+                    </ul>
+                    <ul>
+                        <li>International expansion</li>
+                        <li>AI property advisor</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>⚙️ Technology Stack</h3>
+                <table>
+                    <tr>
+                        <th>Layer</th>
+                        <th>Technologies</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Frontend</strong></td>
+                        <td>React, Next.js, TypeScript</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Backend</strong></td>
+                        <td>Node.js, PostgreSQL, Redis</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Infrastructure</strong></td>
+                        <td>AWS, Kubernetes, CDN</td>
+                    </tr>
+                    <tr>
+                        <td><strong>AI/ML</strong></td>
+                        <td>TensorFlow, OpenAI APIs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Analytics</strong></td>
+                        <td>Mixpanel, Segment, Looker</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Search</strong></td>
+                        <td>Elasticsearch</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Payments</strong></td>
+                        <td>Stripe</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- Go-to-Market Strategy -->
+        <section id="go-to-market" class="section slide-in">
+            <div class="section-header">
+                <h1>📈 Go-to-Market Strategy</h1>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Phase 1: Market Validation (Days 1-30)</h3>
+                        <ul>
+                            <li>Interview 100 property managers</li>
+                            <li>Secure 10+ LOIs ($50K+ monthly revenue intent)</li>
+                            <li>Validate pricing with A/B testing</li>
+                            <li>Refine value proposition</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Phase 2: Supply Acquisition (Days 31-90)</h3>
+                        <h4>Enterprise Property Managers</h4>
+                        <ul>
+                            <li>Related Companies (60,000+ units)</li>
+                            <li>Greystar (750,000+ units globally)</li>
+                            <li>Equity Residential (80,000+ units)</li>
+                        </ul>
+                        <h4>Acquisition Strategy</h4>
+                        <ul>
+                            <li>50% discount for early adopters</li>
+                            <li>Free premium features for 3 months</li>
+                            <li>White-glove onboarding</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Phase 3: Demand Generation (Days 91-180)</h3>
+                        <div class="grid grid-2">
+                            <div>
+                                <h4>Digital Marketing</h4>
+                                <ul>
+                                    <li>SEO: Target luxury keywords</li>
+                                    <li>SEM: $35 CAC vs $66 average</li>
+                                    <li>Content: Luxury lifestyle blog</li>
+                                    <li>Social: Instagram showcases</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4>Partnership Channels</h4>
+                                <ul>
+                                    <li>Corporate Relocation</li>
+                                    <li>Luxury Brands</li>
+                                    <li>Concierge Services</li>
+                                    <li>Corporate Housing</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Phase 4: Scale & Expand (Month 7+)</h3>
+                        <h4>🇺🇸 US Markets (Year 1)</h4>
+                        <div class="badge badge-primary">NYC: 45,000 units</div>
+                        <div class="badge badge-primary">SF Bay: 28,000 units</div>
+                        <div class="badge badge-primary">LA: 35,000 units</div>
+                        <div class="badge badge-primary">Miami: 22,000 units</div>
+                        
+                        <h4>🌍 International (Year 2-3)</h4>
+                        <div class="badge badge-success">London: Europe Gateway</div>
+                        <div class="badge badge-success">Dubai: Middle East Hub</div>
+                        <div class="badge badge-success">Singapore: Asia-Pacific</div>
+                        <div class="badge badge-success">Toronto: North America</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Building -->
+        <section id="team-building" class="section slide-in">
+            <div class="section-header">
+                <h1>👥 Team Building & Organization</h1>
+            </div>
+
+            <h2>Immediate Hires (Month 1-3)</h2>
+            <div class="grid grid-2">
+                <div class="card card-blue">
+                    <h4>👨‍💻 CTO/Technical Co-founder</h4>
+                    <ul>
+                        <li>Target: Ex-Airbnb, Zillow, Compass</li>
+                        <li>Compensation: $150K + 2-4% equity</li>
+                    </ul>
+                </div>
+                <div class="card card-coral">
+                    <h4>💼 VP Sales</h4>
+                    <ul>
+                        <li>Enterprise SaaS background</li>
+                        <li>Compensation: $130K + 1-2% + commission</li>
+                    </ul>
+                </div>
+                <div class="card card-purple">
+                    <h4>📱 Head of Marketing</h4>
+                    <ul>
+                        <li>Marketplace/consumer experience</li>
+                        <li>Compensation: $120K + 1% equity</li>
+                    </ul>
+                </div>
+                <div class="card card-green">
+                    <h4>🤝 Customer Success Lead</h4>
+                    <ul>
+                        <li>Luxury/hospitality background</li>
+                        <li>Compensation: $80K + 0.5% equity</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>📊 Team Scaling Plan</h3>
+                <table>
+                    <tr>
+                        <th>Department</th>
+                        <th>Month 6</th>
+                        <th>Month 12</th>
+                        <th>Month 18</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Engineering</strong></td>
+                        <td>8</td>
+                        <td>15</td>
+                        <td>22</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sales</strong></td>
+                        <td>5</td>
+                        <td>12</td>
+                        <td>20</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Marketing</strong></td>
+                        <td>4</td>
+                        <td>8</td>
+                        <td>12</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Operations</strong></td>
+                        <td>3</td>
+                        <td>6</td>
+                        <td>10</td>
+                    </tr>
+                    <tr style="background: var(--light-blue);">
+                        <td><strong>Total</strong></td>
+                        <td><strong>20</strong></td>
+                        <td><strong>41</strong></td>
+                        <td><strong>64</strong></td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- Financial Projections -->
+        <section id="financial-projections" class="section slide-in">
+            <div class="section-header">
+                <h1>📊 Financial Projections & Unit Economics</h1>
+            </div>
+
+            <h2>Revenue Projections</h2>
+            <table>
+                <tr>
+                    <th>Metric</th>
+                    <th>Year 1</th>
+                    <th>Year 2</th>
+                    <th>Year 3</th>
+                    <th>Year 5</th>
+                </tr>
+                <tr>
+                    <td><strong>GMV</strong></td>
+                    <td>$42M</td>
+                    <td>$235M</td>
+                    <td>$580M</td>
+                    <td>$2.8B</td>
+                </tr>
+                <tr>
+                    <td><strong>Revenue</strong></td>
+                    <td>$1.75M</td>
+                    <td>$12.3M</td>
+                    <td>$31.5M</td>
+                    <td>$102M</td>
+                </tr>
+                <tr style="background: var(--light-green);">
+                    <td><strong>Revenue (w/ Luxury)</strong></td>
+                    <td>$3.8M</td>
+                    <td>$28.5M</td>
+                    <td>$89M</td>
+                    <td>$422M</td>
+                </tr>
+                <tr>
+                    <td><strong>Gross Margin</strong></td>
+                    <td>65%</td>
+                    <td>70%</td>
+                    <td>75%</td>
+                    <td>82%</td>
+                </tr>
+                <tr>
+                    <td><strong>EBITDA</strong></td>
+                    <td>-$1.2M</td>
+                    <td>$2.8M</td>
+                    <td>$15.3M</td>
+                    <td>$198M</td>
+                </tr>
+            </table>
+
+            <div class="chart-container">
+                <canvas id="revenueChart"></canvas>
+            </div>
+
+            <h2>Unit Economics</h2>
+            <div class="grid grid-2">
+                <div class="card card-blue">
+                    <h3>📈 Customer Metrics</h3>
+                    <ul>
+                        <li><strong>CAC:</strong> $1,200 → $1,010 by Year 3</li>
+                        <li><strong>LTV:</strong> $42,000 average</li>
+                        <li><strong>LTV/CAC:</strong> 35x (industry-leading)</li>
+                        <li><strong>Payback Period:</strong> 2.8 → 1.6 months</li>
+                    </ul>
+                </div>
+                <div class="card card-coral">
+                    <h3>📊 Cohort Performance</h3>
+                    <ul>
+                        <li><strong>Month 1:</strong> 100% (baseline)</li>
+                        <li><strong>Month 6:</strong> 115% (upsells)</li>
+                        <li><strong>Month 12:</strong> 128% (expansion)</li>
+                        <li><strong>Month 24:</strong> 142% (premium)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="stat-grid">
+                <div class="stat-box">
+                    <div class="stat-number">3.5%</div>
+                    <div class="stat-label">Monthly Churn</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">135%</div>
+                    <div class="stat-label">Net Retention</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">35x</div>
+                    <div class="stat-label">LTV/CAC</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">82%</div>
+                    <div class="stat-label">Gross Margin</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Funding Strategy -->
+        <section id="funding-strategy" class="section slide-in">
+            <div class="section-header">
+                <h1>💎 Funding Strategy & Use of Proceeds</h1>
+            </div>
+
+            <div class="card">
+                <h2>Seed Round ($2.5M Target)</h2>
+                <div class="grid grid-3">
+                    <div>
+                        <h4>💻 Technology Development</h4>
+                        <div class="badge badge-primary">40% - $1.0M</div>
+                        <ul>
+                            <li>MVP development</li>
+                            <li>AI matching engine</li>
+                            <li>Mobile applications</li>
+                            <li>API integrations</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>📢 Marketing & Acquisition</h4>
+                        <div class="badge badge-coral">35% - $875K</div>
+                        <ul>
+                            <li>Digital campaigns</li>
+                            <li>SEO/content strategy</li>
+                            <li>Partnership development</li>
+                            <li>Brand ambassadors</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>🏢 Operations & Team</h4>
+                        <div class="badge badge-success">25% - $625K</div>
+                        <ul>
+                            <li>Key hires</li>
+                            <li>Customer success</li>
+                            <li>Infrastructure</li>
+                            <li>Legal & compliance</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-2">
+                <div class="card card-purple">
+                    <h3>🎯 Target Investors</h3>
+                    <h4>PropTech Specialists</h4>
+                    <ul>
+                        <li>Edward Lando (Pareto Holdings): $300K lead</li>
+                        <li>PropTech Angel Group: $100K</li>
+                        <li>RE Angels: $150K</li>
+                    </ul>
+                    <h4>Strategic Angels</h4>
+                    <ul>
+                        <li>Scott Belsky (Adobe CSO): $100K</li>
+                        <li>Ashley Flucas syndicate: $100K</li>
+                        <li>DVC PropTech Syndicate: $111K</li>
+                    </ul>
+                </div>
+                <div class="card card-green">
+                    <h3>🚀 Series A Planning (Month 10-12)</h3>
+                    <ul>
+                        <li><strong>Target:</strong> $15-20M</li>
+                        <li><strong>Valuation:</strong> $80-100M</li>
+                        <li><strong>Use:</strong> International expansion, AI development</li>
+                    </ul>
+                    <h4>Institutional Targets</h4>
+                    <ul>
+                        <li>Fifth Wall Ventures</li>
+                        <li>MetaProp NYC</li>
+                        <li>Camber Creek</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Milestones -->
+        <section id="milestones" class="section slide-in">
+            <div class="section-header">
+                <h1>🎯 Key Milestones & Success Metrics</h1>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Q1 2025</h3>
+                        <div class="badge badge-success">✓ Launch MVP platform</div>
+                        <div class="badge badge-success">✓ Onboard 500 properties</div>
+                        <div class="badge badge-success">✓ Achieve $150K MRR</div>
+                        <div class="badge badge-success">✓ Close seed funding</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Q2 2025</h3>
+                        <div class="badge badge-warning">→ 1,500 properties listed</div>
+                        <div class="badge badge-warning">→ $400K MRR</div>
+                        <div class="badge badge-warning">→ Launch AI matching</div>
+                        <div class="badge badge-warning">→ First enterprise deal</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Q3 2025</h3>
+                        <div class="badge badge-warning">→ 3,000 properties</div>
+                        <div class="badge badge-warning">→ $850K MRR</div>
+                        <div class="badge badge-warning">→ International pilot</div>
+                        <div class="badge badge-warning">→ Series A term sheets</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Q4 2025</h3>
+                        <div class="badge badge-warning">→ 5,000+ properties</div>
+                        <div class="badge badge-warning">→ $1.5M MRR</div>
+                        <div class="badge badge-warning">→ Close Series A</div>
+                        <div class="badge badge-warning">→ Launch second market</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-2">
+                <div class="card card-blue">
+                    <h3>📅 Year 2 Targets</h3>
+                    <ul>
+                        <li>15,000 properties</li>
+                        <li>$12M ARR ($28M with luxury streams)</li>
+                        <li>3 international markets</li>
+                        <li>Strategic acquisition</li>
+                    </ul>
+                </div>
+                <div class="card card-coral">
+                    <h3>🎯 Year 3 Goals</h3>
+                    <ul>
+                        <li>30,000 properties globally</li>
+                        <li>$31M ARR ($89M total)</li>
+                        <li>Market leader in luxury segment</li>
+                        <li>IPO preparation begins</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Risk Mitigation -->
+        <section id="risk-mitigation" class="section slide-in">
+            <div class="section-header">
+                <h1>🛡️ Risk Mitigation & Strategic Advantages</h1>
+            </div>
+
+            <h2>Primary Risks & Mitigation</h2>
+            <div class="grid grid-3">
+                <div class="card card-coral">
+                    <h4>⚔️ Competition from Incumbents</h4>
+                    <ul>
+                        <li>Premium positioning</li>
+                        <li>Exclusive inventory</li>
+                        <li>Domain moat</li>
+                        <li>Network effects</li>
+                    </ul>
+                </div>
+                <div class="card card-blue">
+                    <h4>📦 Supply Acquisition</h4>
+                    <ul>
+                        <li>Enterprise partnerships</li>
+                        <li>Penetration pricing</li>
+                        <li>White-glove service</li>
+                        <li>Early lock-ins</li>
+                    </ul>
+                </div>
+                <div class="card card-purple">
+                    <h4>🌍 International Complexity</h4>
+                    <ul>
+                        <li>Partnership model</li>
+                        <li>Proven playbook</li>
+                        <li>Local teams</li>
+                        <li>Global platform</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>Strategic Advantages</h2>
+            <div class="grid grid-3">
+                <div class="card card-green">
+                    <h3>💎 Domain Asset Safety Net</h3>
+                    <ul>
+                        <li>Worst case: $5M liquidation</li>
+                        <li>2x return even if business fails</li>
+                        <li>Reduces investor risk</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>🚪 Multiple Exit Paths</h3>
+                    <ul>
+                        <li>Strategic acquisition</li>
+                        <li>International arbitrage</li>
+                        <li>Domain separate sale</li>
+                        <li>IPO premium valuation</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>📊 Proven Market Dynamics</h3>
+                    <ul>
+                        <li>Apartments.com: $7.2B exit</li>
+                        <li>Premium multiples</li>
+                        <li>International 8x TAM</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Path to Exit -->
+        <section id="path-to-exit" class="section slide-in">
+            <div class="section-header">
+                <h1>🚀 The Path to $4 Billion</h1>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Year 1-2: Foundation</h3>
+                        <ul>
+                            <li>Establish market leadership in luxury segment</li>
+                            <li>Prove unit economics at scale</li>
+                            <li>Build strategic moat through partnerships</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Year 3-4: Expansion</h3>
+                        <ul>
+                            <li>International markets drive 3x growth</li>
+                            <li>Luxury services create ecosystem lock-in</li>
+                            <li>M&A consolidates market position</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Year 5: Exit Options</h3>
+                        <div class="stat-grid">
+                            <div class="stat-box">
+                                <div class="stat-number">$2.7B</div>
+                                <div class="stat-label">Base Value</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-number">+$100M</div>
+                                <div class="stat-label">Domain Premium</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-number">+$500M</div>
+                                <div class="stat-label">International</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-number">+$700M</div>
+                                <div class="stat-label">Luxury Premium</div>
+                            </div>
+                        </div>
+                        <h3 style="text-align: center; margin-top: 30px; color: var(--primary-green);">
+                            Total Exit Value: $4.0B 🎯
+                        </h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h2>The Certainty of Success</h2>
+                <p>
+                    Unlike typical startups, LuxuryApartments.com combines:<br><br>
+                    ✨ Irreplaceable domain asset • Proven business model<br>
+                    🎯 Underserved premium market • Multiple revenue streams<br>
+                    🌍 Global expansion opportunity • Built-in investment safety
+                </p>
+                <p style="font-size: 1.4rem; margin-top: 30px; font-weight: 700;">
+                    The question isn't whether LuxuryApartments.com will succeed—<br>
+                    it's how quickly it will dominate the global luxury rental market.
+                </p>
+            </div>
+
+            <div class="card" style="text-align: center; margin-top: 60px;">
+                <h2>🎯 Next Steps: 30-Day Sprint</h2>
+                <div class="grid grid-4">
+                    <div>
+                        <h4>Week 1</h4>
+                        <ul style="text-align: left;">
+                            <li>Incorporate C-Corp</li>
+                            <li>Business accounts</li>
+                            <li>Infrastructure</li>
+                            <li>Customer interviews</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Week 2</h4>
+                        <ul style="text-align: left;">
+                            <li>50 interviews</li>
+                            <li>Secure 5 LOIs</li>
+                            <li>Refine pricing</li>
+                            <li>Start MVP</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Week 3</h4>
+                        <ul style="text-align: left;">
+                            <li>Close 10 LOIs</li>
+                            <li>Launch landing page</li>
+                            <li>Investor outreach</li>
+                            <li>Hire developer</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Week 4</h4>
+                        <ul style="text-align: left;">
+                            <li>Demo MVP</li>
+                            <li>First paid pilot</li>
+                            <li>Investor meetings</li>
+                            <li>Seed pitch deck</li>
+                        </ul>
+                    </div>
+                </div>
+                <p style="margin-top: 40px; font-size: 1.2rem; color: var(--primary-blue);">
+                    <strong>By Day 30:</strong> $50K+ in committed MRR, MVP launched, seed round in process.
+                </p>
+            </div>
+
+            <div style="text-align: center; margin-top: 80px;">
+                <a href="mailto:investors@luxuryapartments.com" class="cta-button">
+                    💎 Schedule Investment Discussion
+                </a>
+                <p style="margin-top: 40px; font-size: 1.3rem; color: var(--primary-blue);">
+                    <strong>LuxuryApartments.com isn't just building a platform—<br>
+                    we're creating the infrastructure for how luxury real estate moves in the 21st century.</strong>
+                </p>
+                <p style="margin-top: 20px; font-size: 1.1rem; color: var(--text-light);">
+                    From a $2.5M seed investment to a $4B exit in 5 years,<br>
+                    this is the PropTech opportunity of the decade.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Sidebar Toggle
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('visible');
+        }
+
+        // Active Navigation
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Smooth scroll and active section detection
+        const sections = document.querySelectorAll('.section');
+        const navItems = document.querySelectorAll('.nav-item');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href').slice(1) === current) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Chart.js Configuration
+        Chart.defaults.color = '#495057';
+        Chart.defaults.borderColor = '#E9ECEF';
+        Chart.defaults.font.family = '-apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", sans-serif';
+
+        // Market Chart
+        const marketCtx = document.getElementById('marketChart');
+        if (marketCtx) {
+            new Chart(marketCtx.getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['US Market', 'UK', 'Dubai', 'Singapore', 'Global TAM'],
+                    datasets: [{
+                        label: 'Market Size ($B)',
+                        data: [18.2, 12.5, 8.3, 6.7, 145],
+                        backgroundColor: [
+                            'rgba(77, 171, 247, 0.7)',
+                            'rgba(151, 117, 250, 0.7)',
+                            'rgba(81, 207, 102, 0.7)',
+                            'rgba(255, 215, 59, 0.7)',
+                            'rgba(255, 107, 107, 0.7)'
+                        ],
+                        borderColor: [
+                            '#4DABF7',
+                            '#9775FA',
+                            '#51CF66',
+                            '#FFD43B',
+                            '#FF6B6B'
+                        ],
+                        borderWidth: 2,
+                        borderRadius: 12
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        title: {
+                            display: true,
+                            text: 'Global Market Opportunity',
+                            color: '#212529',
+                            font: {
+                                size: 18,
+                                weight: '700'
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: '#F8F9FA'
+                            },
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + value + 'B';
+                                }
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Revenue Chart
+        const revenueCtx = document.getElementById('revenueChart');
+        if (revenueCtx) {
+            new Chart(revenueCtx.getContext('2d'), {
+                type: 'line',
+                data: {
+                    labels: ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'],
+                    datasets: [{
+                        label: 'Traditional Model',
+                        data: [1.75, 12.3, 31.5, 58.2, 102],
+                        borderColor: '#868E96',
+                        backgroundColor: 'transparent',
+                        borderWidth: 2,
+                        tension: 0.4,
+                        borderDash: [5, 5]
+                    }, {
+                        label: 'With Luxury Streams',
+                        data: [3.8, 28.5, 89, 215, 422],
+                        borderColor: '#51CF66',
+                        backgroundColor: 'rgba(81, 207, 102, 0.1)',
+                        borderWidth: 3,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Revenue Projection ($M)',
+                            color: '#212529',
+                            font: {
+                                size: 18,
+                                weight: '700'
+                            }
+                        },
+                        legend: {
+                            labels: {
+                                color: '#495057'
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: '#F8F9FA'
+                            },
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + value + 'M';
+                                }
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in, .slide-in').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

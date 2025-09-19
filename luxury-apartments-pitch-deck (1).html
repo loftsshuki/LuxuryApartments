@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuxuryApartments.com - Investor Deck</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --luxury-gold: #D4AF37;
+            --luxury-gold-light: #F4E5BC;
+            --luxury-black: #0A0A0A;
+            --luxury-gray: #1A1A1A;
+            --luxury-gray-light: #2A2A2A;
+            --luxury-white: #FAFAFA;
+            --accent-blue: #1E3A8A;
+            --success-green: #22C55E;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 100%);
+            color: var(--luxury-white);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        .nav-dots {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+        }
+
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid var(--luxury-gold);
+            background: transparent;
+            margin: 15px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dot.active {
+            background: var(--luxury-gold);
+            transform: scale(1.3);
+        }
+
+        /* Sections */
+        .section {
+            min-height: 100vh;
+            padding: 80px 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--luxury-gold), transparent);
+        }
+
+        .container {
+            max-width: 1400px;
+            width: 100%;
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 4.5rem;
+            font-weight: 300;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--luxury-gold) 0%, var(--luxury-gold-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        h2 {
+            font-size: 3rem;
+            font-weight: 300;
+            color: var(--luxury-gold);
+            margin-bottom: 30px;
+            letter-spacing: -1px;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: var(--luxury-gold-light);
+            margin-bottom: 20px;
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            color: #AAA;
+            font-weight: 300;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-logo {
+            font-size: 5rem;
+            font-weight: 200;
+            letter-spacing: 8px;
+            margin-bottom: 10px;
+        }
+
+        .tagline {
+            font-size: 1.6rem;
+            color: var(--luxury-gold-light);
+            margin-bottom: 60px;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-top: 80px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, var(--luxury-gray) 0%, var(--luxury-gray-light) 100%);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid var(--luxury-gold);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--luxury-gold);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: var(--luxury-gold);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: #AAA;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Market Opportunity */
+        .market-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .market-content h2 {
+            margin-bottom: 40px;
+        }
+
+        .market-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: var(--luxury-gray);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .market-item:hover {
+            background: var(--luxury-gray-light);
+            transform: translateX(10px);
+        }
+
+        .market-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--luxury-gold) 0%, var(--luxury-gold-light) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            font-size: 1.5rem;
+        }
+
+        .chart-container {
+            background: var(--luxury-gray);
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid #333;
+        }
+
+        /* Business Model */
+        .revenue-streams {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .stream-card {
+            background: var(--luxury-gray);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stream-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--luxury-gold) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .stream-card:hover::after {
+            opacity: 0.05;
+        }
+
+        .stream-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--luxury-gold);
+        }
+
+        .stream-title {
+            font-size: 1.3rem;
+            color: var(--luxury-gold);
+            margin-bottom: 15px;
+        }
+
+        .stream-value {
+            font-size: 2rem;
+            font-weight: 300;
+            margin-bottom: 10px;
+        }
+
+        .stream-description {
+            color: #AAA;
+            line-height: 1.6;
+        }
+
+        /* Traction */
+        .traction-timeline {
+            position: relative;
+            padding: 40px 0;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--luxury-gold);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding: 30px;
+            margin-bottom: 40px;
+            width: calc(50% - 40px);
+        }
+
+        .timeline-item:nth-child(odd) {
+            margin-left: auto;
+            text-align: left;
+        }
+
+        .timeline-item:nth-child(even) {
+            text-align: right;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--luxury-gold);
+            border: 4px solid var(--luxury-black);
+            border-radius: 50%;
+            top: 35px;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-dot {
+            left: -50px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            right: -50px;
+        }
+
+        .timeline-content {
+            background: var(--luxury-gray);
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #333;
+        }
+
+        .timeline-date {
+            color: var(--luxury-gold);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        /* Financial */
+        .financial-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .metric-box {
+            background: var(--luxury-gray);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid #333;
+        }
+
+        .metric-title {
+            color: var(--luxury-gold);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .metric-value {
+            font-size: 3rem;
+            font-weight: 300;
+            margin-bottom: 10px;
+        }
+
+        .metric-change {
+            color: var(--success-green);
+            font-size: 1.1rem;
+        }
+
+        /* Team */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .team-card {
+            background: var(--luxury-gray);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: scale(1.05);
+            background: var(--luxury-gray-light);
+        }
+
+        .team-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--luxury-gold) 0%, var(--luxury-gold-light) 100%);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+        }
+
+        .team-name {
+            font-size: 1.2rem;
+            color: var(--luxury-gold);
+            margin-bottom: 5px;
+        }
+
+        .team-role {
+            color: #AAA;
+            font-size: 0.9rem;
+        }
+
+        /* CTA */
+        .cta-section {
+            text-align: center;
+            padding: 100px 60px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 20px 60px;
+            background: linear-gradient(135deg, var(--luxury-gold) 0%, var(--luxury-gold-light) 100%);
+            color: var(--luxury-black);
+            font-size: 1.3rem;
+            font-weight: 500;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+            margin-top: 40px;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.3);
+        }
+
+        .contact-info {
+            margin-top: 60px;
+            color: #AAA;
+        }
+
+        .contact-info a {
+            color: var(--luxury-gold);
+            text-decoration: none;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-stats, .revenue-streams, .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .market-grid, .financial-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 3rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 40px 20px;
+            }
+
+            .hero-stats, .revenue-streams, .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-item {
+                width: 100%;
+                text-align: left !important;
+                margin-left: 40px !important;
+            }
+
+            .timeline-line {
+                left: 20px;
+            }
+
+            .timeline-dot {
+                left: 10px !important;
+            }
+
+            .nav-dots {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Dots -->
+    <div class="nav-dots">
+        <div class="nav-dot active" onclick="scrollToSection(0)"></div>
+        <div class="nav-dot" onclick="scrollToSection(1)"></div>
+        <div class="nav-dot" onclick="scrollToSection(2)"></div>
+        <div class="nav-dot" onclick="scrollToSection(3)"></div>
+        <div class="nav-dot" onclick="scrollToSection(4)"></div>
+        <div class="nav-dot" onclick="scrollToSection(5)"></div>
+        <div class="nav-dot" onclick="scrollToSection(6)"></div>
+        <div class="nav-dot" onclick="scrollToSection(7)"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="section hero" id="section-0">
+        <div class="container fade-in">
+            <div class="hero-logo">LUXURYAPARTMENTS</div>
+            <div class="tagline">THE PREMIUM PROPTECH PLATFORM</div>
+            <h1>Redefining Luxury<br>Apartment Rentals</h1>
+            <p class="subtitle">
+                Capturing the $18.2B US luxury rental market<br>
+                with a platform that delivers 156% ROI to property managers<br>
+                and reduces vacancy periods by 60%
+            </p>
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <div class="stat-number">$18.2B</div>
+                    <div class="stat-label">US Market Size</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">8.3%</div>
+                    <div class="stat-label">Annual Growth</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">$5-10M</div>
+                    <div class="stat-label">Domain Value</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">35x</div>
+                    <div class="stat-label">LTV/CAC Ratio</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem & Market Section -->
+    <section class="section" id="section-1">
+        <div class="container">
+            <div class="market-grid">
+                <div class="market-content fade-in">
+                    <h2>The $145B Global Opportunity</h2>
+                    <div class="market-item">
+                        <div class="market-icon">📊</div>
+                        <div>
+                            <h3>Market Problem</h3>
+                            <p>73% of luxury properties struggle to find qualified renters. Average vacancy costs $15,000/month.</p>
+                        </div>
+                    </div>
+                    <div class="market-item">
+                        <div class="market-icon">🎯</div>
+                        <div>
+                            <h3>Our Solution</h3>
+                            <p>Exclusive platform for $5,000+ monthly rentals with AI-powered matching and verified luxury amenities.</p>
+                        </div>
+                    </div>
+                    <div class="market-item">
+                        <div class="market-icon">🚀</div>
+                        <div>
+                            <h3>Competitive Moat</h3>
+                            <p>Premium domain provides 40% CAC advantage and immediate brand authority in luxury segment.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="marketChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Model Section -->
+    <section class="section" id="section-2">
+        <div class="container">
+            <h2 class="fade-in">Revolutionary Revenue Model</h2>
+            <p class="subtitle fade-in">Traditional marketplace revenue of $102M expands to $422M with luxury ecosystem</p>
+            <div class="revenue-streams">
+                <div class="stream-card fade-in">
+                    <div class="stream-title">CORE PLATFORM</div>
+                    <div class="stream-value">$102M</div>
+                    <div class="stream-description">
+                        • SaaS subscriptions<br>
+                        • Transaction fees<br>
+                        • Premium listings<br>
+                        • 46% gross margin
+                    </div>
+                </div>
+                <div class="stream-card fade-in">
+                    <div class="stream-title">LUXURY SERVICES</div>
+                    <div class="stream-value">$180M</div>
+                    <div class="stream-description">
+                        • Concierge services<br>
+                        • Express approvals<br>
+                        • Black Card membership<br>
+                        • 85% gross margin
+                    </div>
+                </div>
+                <div class="stream-card fade-in">
+                    <div class="stream-title">STRATEGIC EXPANSION</div>
+                    <div class="stream-value">$140M</div>
+                    <div class="stream-description">
+                        • International relocation<br>
+                        • Furniture partnerships<br>
+                        • Data products<br>
+                        • 90% gross margin
+                    </div>
+                </div>
+            </div>
+            <div class="chart-container" style="margin-top: 60px;">
+                <canvas id="revenueChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- Traction Section -->
+    <section class="section" id="section-3">
+        <div class="container">
+            <h2 class="fade-in">Execution Roadmap</h2>
+            <p class="subtitle fade-in">From MVP to market dominance in 18 months</p>
+            <div class="traction-timeline">
+                <div class="timeline-line"></div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Q1 2025</div>
+                        <h3>Launch & Validation</h3>
+                        <p>500 properties • $150K MRR • Seed funding closed</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Q2 2025</div>
+                        <h3>Scale Supply</h3>
+                        <p>1,500 properties • $400K MRR • Enterprise partnerships</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Q3 2025</div>
+                        <h3>Market Expansion</h3>
+                        <p>3,000 properties • $850K MRR • International pilot</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Q4 2025</div>
+                        <h3>Series A Ready</h3>
+                        <p>5,000 properties • $1.5M MRR • Second market launch</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Financial Projections Section -->
+    <section class="section" id="section-4">
+        <div class="container">
+            <h2 class="fade-in">Financial Projections</h2>
+            <p class="subtitle fade-in">Path to $4B valuation with proven unit economics</p>
+            <div class="financial-grid">
+                <div class="metric-box fade-in">
+                    <div class="metric-title">Customer Acquisition</div>
+                    <div class="metric-value">$1,010</div>
+                    <div class="metric-change">↓ 16% YoY improvement</div>
+                </div>
+                <div class="metric-box fade-in">
+                    <div class="metric-title">Lifetime Value</div>
+                    <div class="metric-value">$42,000</div>
+                    <div class="metric-change">↑ 135% net retention</div>
+                </div>
+                <div class="metric-box fade-in">
+                    <div class="metric-title">Gross Margin</div>
+                    <div class="metric-value">82%</div>
+                    <div class="metric-change">↑ From 46% traditional</div>
+                </div>
+                <div class="metric-box fade-in">
+                    <div class="metric-title">Payback Period</div>
+                    <div class="metric-value">1.6 mo</div>
+                    <div class="metric-change">↓ From 2.8 months</div>
+                </div>
+            </div>
+            <div class="chart-container" style="margin-top: 60px;">
+                <canvas id="growthChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- Strategic Partnerships Section -->
+    <section class="section" id="section-5">
+        <div class="container">
+            <h2 class="fade-in">Strategic Partnerships</h2>
+            <p class="subtitle fade-in">Enterprise deals with industry leaders</p>
+            <div class="revenue-streams">
+                <div class="stream-card fade-in">
+                    <div class="stream-title">PROPERTY GIANTS</div>
+                    <div class="stream-value">890K Units</div>
+                    <div class="stream-description">
+                        • Related Companies<br>
+                        • Greystar<br>
+                        • Equity Residential<br>
+                        • Signed LOIs: $2.5M ARR
+                    </div>
+                </div>
+                <div class="stream-card fade-in">
+                    <div class="stream-title">LUXURY BRANDS</div>
+                    <div class="stream-value">3.4M Users</div>
+                    <div class="stream-description">
+                        • American Express Platinum<br>
+                        • Mercedes-Benz<br>
+                        • Four Seasons<br>
+                        • Exclusive partnerships
+                    </div>
+                </div>
+                <div class="stream-card fade-in">
+                    <div class="stream-title">CORPORATE RELOCATION</div>
+                    <div class="stream-value">$850M TAM</div>
+                    <div class="stream-description">
+                        • Cartus<br>
+                        • SIRVA<br>
+                        • Graebel<br>
+                        • Preferred vendor status
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="section" id="section-6">
+        <div class="container">
+            <h2 class="fade-in">World-Class Team</h2>
+            <p class="subtitle fade-in">PropTech veterans with proven exits</p>
+            <div class="team-grid">
+                <div class="team-card fade-in">
+                    <div class="team-avatar"></div>
+                    <div class="team-name">CEO/Founder</div>
+                    <div class="team-role">Ex-VP Product Zillow</div>
+                </div>
+                <div class="team-card fade-in">
+                    <div class="team-avatar"></div>
+                    <div class="team-name">CTO (Hiring)</div>
+                    <div class="team-role">Target: Ex-Airbnb/Compass</div>
+                </div>
+                <div class="team-card fade-in">
+                    <div class="team-avatar"></div>
+                    <div class="team-name">VP Sales</div>
+                    <div class="team-role">Enterprise SaaS Expert</div>
+                </div>
+                <div class="team-card fade-in">
+                    <div class="team-avatar"></div>
+                    <div class="team-name">VP Marketing</div>
+                    <div class="team-role">Luxury Brand Specialist</div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 60px;">
+                <h3 class="fade-in">Advisory Board</h3>
+                <p class="subtitle fade-in">
+                    Former Zillow Executive • Luxury Real Estate Broker • PropTech Founder<br>
+                    Marketplace Expert • Technical Scaling Advisor
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta-section" id="section-7">
+        <div class="container fade-in">
+            <h2>Join the Future of Luxury Real Estate</h2>
+            <h1 style="font-size: 3rem; margin: 40px 0;">$2.5M Seed Round</h1>
+            <p class="subtitle">
+                <strong>Use of Proceeds:</strong><br>
+                40% Technology Development • 35% Customer Acquisition • 25% Team Building
+            </p>
+            <div style="margin: 60px 0;">
+                <h3>Investment Highlights</h3>
+                <div class="hero-stats" style="max-width: 800px; margin: 40px auto;">
+                    <div class="stat-card">
+                        <div class="stat-number">$4B</div>
+                        <div class="stat-label">5-Year Target</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">6.5x</div>
+                        <div class="stat-label">Revenue Multiple</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">2x</div>
+                        <div class="stat-label">Min Return</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">$5M</div>
+                        <div class="stat-label">Domain Floor</div>
+                    </div>
+                </div>
+            </div>
+            <a href="mailto:investors@luxuryapartments.com" class="cta-button">SCHEDULE INVESTOR MEETING</a>
+            <div class="contact-info">
+                <p>For more information contact:</p>
+                <p><a href="mailto:investors@luxuryapartments.com">investors@luxuryapartments.com</a> | 1-800-LUXURY-1</p>
+                <p style="margin-top: 20px; color: var(--luxury-gold);">
+                    LuxuryApartments.com - Where Premium Real Estate Meets Technology
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Navigation
+        function scrollToSection(index) {
+            document.getElementById(`section-${index}`).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Update active nav dot on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.section');
+            const dots = document.querySelectorAll('.nav-dot');
+            
+            let current = 0;
+            sections.forEach((section, index) => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+                    current = index;
+                }
+            });
+            
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === current);
+            });
+        });
+
+        // Chart configurations
+        Chart.defaults.color = '#AAA';
+        Chart.defaults.borderColor = '#333';
+        Chart.defaults.font.family = 'Helvetica Neue';
+
+        // Market Growth Chart
+        const marketCtx = document.getElementById('marketChart').getContext('2d');
+        new Chart(marketCtx, {
+            type: 'bar',
+            data: {
+                labels: ['US Market', 'UK', 'Dubai', 'Singapore', 'Global TAM'],
+                datasets: [{
+                    label: 'Market Size ($B)',
+                    data: [18.2, 12.5, 8.3, 6.7, 145],
+                    backgroundColor: 'rgba(212, 175, 55, 0.6)',
+                    borderColor: '#D4AF37',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: 'Global Market Opportunity',
+                        color: '#D4AF37',
+                        font: {
+                            size: 18,
+                            weight: '300'
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: '#333'
+                        },
+                        ticks: {
+                            callback: function(value) {
+                                return '$' + value + 'B';
+                            }
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+
+        // Revenue Growth Chart
+        const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+        new Chart(revenueCtx, {
+            type: 'line',
+            data: {
+                labels: ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'],
+                datasets: [{
+                    label: 'Traditional Model',
+                    data: [1.75, 12.3, 31.5, 58.2, 102],
+                    borderColor: '#666',
+                    backgroundColor: 'transparent',
+                    borderWidth: 2,
+                    tension: 0.4
+                }, {
+                    label: 'With Luxury Streams',
+                    data: [3.8, 28.5, 89, 215, 422],
+                    borderColor: '#D4AF37',
+                    backgroundColor: 'rgba(212, 175, 55, 0.1)',
+                    borderWidth: 3,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Revenue Projection ($M)',
+                        color: '#D4AF37',
+                        font: {
+                            size: 18,
+                            weight: '300'
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: '#333'
+                        },
+                        ticks: {
+                            callback: function(value) {
+                                return '$' + value + 'M';
+                            }
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+
+        // Growth Metrics Chart
+        const growthCtx = document.getElementById('growthChart').getContext('2d');
+        new Chart(growthCtx, {
+            type: 'line',
+            data: {
+                labels: ['Q1', 'Q2', 'Q3', 'Q4', 'Q5', 'Q6', 'Q7', 'Q8'],
+                datasets: [{
+                    label: 'Properties Listed',
+                    data: [500, 1500, 3000, 5000, 8000, 12000, 18000, 25000],
+                    borderColor: '#D4AF37',
+                    backgroundColor: 'rgba(212, 175, 55, 0.1)',
+                    borderWidth: 3,
+                    tension: 0.4,
+                    yAxisID: 'y'
+                }, {
+                    label: 'Monthly Recurring Revenue ($K)',
+                    data: [150, 400, 850, 1500, 2400, 3800, 5500, 8200],
+                    borderColor: '#22C55E',
+                    backgroundColor: 'rgba(34, 197, 94, 0.1)',
+                    borderWidth: 3,
+                    tension: 0.4,
+                    yAxisID: 'y1'
+                }]
+            },
+            options: {
+                responsive: true,
+                interaction: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Growth Trajectory',
+                        color: '#D4AF37',
+                        font: {
+                            size: 18,
+                            weight: '300'
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        grid: {
+                            color: '#333'
+                        },
+                        title: {
+                            display: true,
+                            text: 'Properties',
+                            color: '#D4AF37'
+                        }
+                    },
+                    y1: {
+                        type: 'linear',
+                        display: true,
+                        position: 'right',
+                        grid: {
+                            drawOnChartArea: false,
+                        },
+                        title: {
+                            display: true,
+                            text: 'MRR ($K)',
+                            color: '#22C55E'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+
+        // Add fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

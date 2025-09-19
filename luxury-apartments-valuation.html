@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuxuryApartments.com Domain Valuation Report</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @page {
+            size: letter;
+            margin: 0.5in;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 60px 50px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255,255,255,0.05) 10px,
+                rgba(255,255,255,0.05) 20px
+            );
+            animation: slide 20s linear infinite;
+        }
+
+        @keyframes slide {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .domain-name {
+            font-size: 48px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .subtitle {
+            font-size: 18px;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+
+        .valuation-hero {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 40px;
+            margin: 30px;
+            border-radius: 15px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .valuation-hero h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+
+        .valuation-range {
+            font-size: 56px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            margin: 20px 0;
+        }
+
+        .content {
+            padding: 40px 50px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            color: #2c3e50;
+            font-size: 28px;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            position: relative;
+        }
+
+        h3 {
+            color: #34495e;
+            font-size: 20px;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .methodology-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .methodology-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .methodology-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .methodology-card h4 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .valuation-amount {
+            font-size: 32px;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+
+        .chart-container {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+
+        .bar-chart {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+            height: 250px;
+            padding: 20px 0;
+        }
+
+        .bar {
+            width: 80px;
+            background: linear-gradient(to top, #667eea, #764ba2);
+            border-radius: 5px 5px 0 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .bar:hover {
+            transform: scaleY(1.05);
+        }
+
+        .bar-label {
+            position: absolute;
+            bottom: -30px;
+            font-size: 12px;
+            font-weight: 600;
+            text-align: center;
+            width: 100px;
+            color: #2c3e50;
+        }
+
+        .bar-value {
+            position: absolute;
+            top: -25px;
+            font-weight: 700;
+            color: #2c3e50;
+            font-size: 14px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.1);
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #7f8c8d;
+            font-weight: 500;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #ff6b6b;
+        }
+
+        .market-trends {
+            background: #f0f3ff;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+
+        .trend-item {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .trend-item:hover {
+            transform: translateX(10px);
+        }
+
+        .trend-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            color: white;
+            font-size: 20px;
+        }
+
+        .footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+        }
+
+        .conclusion-box {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 35px;
+            border-radius: 15px;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .price-comparison {
+            display: flex;
+            justify-content: space-between;
+            margin: 30px 0;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .price-tier {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+
+        .price-tier:hover {
+            transform: scale(1.05);
+            border-color: #667eea;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .tier-label {
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .tier-price {
+            font-size: 24px;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="domain-name">LuxuryApartments.com</h1>
+            <p class="subtitle">Professional Domain Valuation Report • September 2025</p>
+        </div>
+
+        <div class="valuation-hero">
+            <h2>Estimated Market Value</h2>
+            <div class="valuation-range">$100,000 - $500,000</div>
+            <p>Based on comprehensive market analysis and multiple valuation methodologies</p>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <h2>Executive Summary</h2>
+                <p>LuxuryApartments.com represents a premium digital asset combining two high-value commercial keywords in the rapidly expanding $295.3 billion luxury apartment market. With domain sales surging 32.8% in 2024 and digital transformation reshaping real estate, this domain commands significant strategic value for industry leaders.</p>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">18-40K</div>
+                        <div class="stat-label">Monthly Searches</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">$3-$20</div>
+                        <div class="stat-label">CPC Range</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">15</div>
+                        <div class="stat-label">Character Length</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">.COM</div>
+                        <div class="stat-label">Premium TLD</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Valuation Methodologies</h2>
+                
+                <div class="methodology-grid">
+                    <div class="methodology-card">
+                        <h4>🔧 Automated Tools</h4>
+                        <div class="valuation-amount">$8K - $35K</div>
+                        <p>Conservative baseline from Estibot, GoDaddy, and Sedo algorithms analyzing keyword metrics and search volume.</p>
+                    </div>
+                    <div class="methodology-card">
+                        <h4>📊 Comparable Sales</h4>
+                        <div class="valuation-amount">$100K - $200K</div>
+                        <p>Based on recent premium real estate domain transactions including Bedroom.com ($87,600) and similar assets.</p>
+                    </div>
+                    <div class="methodology-card">
+                        <h4>💼 End-User Value</h4>
+                        <div class="valuation-amount">$200K - $500K</div>
+                        <p>Strategic value for luxury developers considering ROI, brand positioning, and market authority benefits.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Comparable Domain Sales Analysis</h2>
+                
+                <div class="chart-container">
+                    <h3 style="text-align: center; margin-bottom: 20px;">Recent Premium Domain Transactions (2024-2025)</h3>
+                    <div class="bar-chart">
+                        <div class="bar" style="height: 35%">
+                            <div class="bar-value">$35M</div>
+                            <div class="bar-label">VacationRentals.com</div>
+                        </div>
+                        <div class="bar" style="height: 2.5%">
+                            <div class="bar-value">$87.6K</div>
+                            <div class="bar-label">Bedroom.com</div>
+                        </div>
+                        <div class="bar" style="height: 2.4%">
+                            <div class="bar-value">$82.5K</div>
+                            <div class="bar-label">Northridge.com</div>
+                        </div>
+                        <div class="bar" style="height: 2.1%">
+                            <div class="bar-value">$75K</div>
+                            <div class="bar-label">HomeBattery.com</div>
+                        </div>
+                        <div class="bar" style="height: 2.1%">
+                            <div class="bar-value">$75K</div>
+                            <div class="bar-label">InteriorDesign.ai</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Market Opportunity</h2>
+                
+                <div class="market-trends">
+                    <div class="trend-item">
+                        <div class="trend-icon">📈</div>
+                        <div>
+                            <strong>$295.3 Billion Market Size:</strong> U.S. luxury residential real estate market with 6.9% CAGR projected through 2035
+                        </div>
+                    </div>
+                    <div class="trend-item">
+                        <div class="trend-icon">🏢</div>
+                        <div>
+                            <strong>58% Market Share:</strong> Apartments and condominiums dominate the luxury residential segment
+                        </div>
+                    </div>
+                    <div class="trend-item">
+                        <div class="trend-icon">💰</div>
+                        <div>
+                            <strong>$31 Trillion Wealth Transfer:</strong> Baby boomer wealth creating new luxury buyer demographics
+                        </div>
+                    </div>
+                    <div class="trend-item">
+                        <div class="trend-icon">🚀</div>
+                        <div>
+                            <strong>32.8% Domain Growth:</strong> Premium .com sales volume increased to $185M in 2024
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Valuation Factors</h2>
+                
+                <div class="highlight-box">
+                    <h3>Premium Value Drivers</h3>
+                    <ul style="margin-top: 15px; padding-left: 20px;">
+                        <li><strong>Exact-Match Keywords:</strong> Perfect alignment with high-intent commercial searches</li>
+                        <li><strong>Brand Authority:</strong> Instant credibility in luxury real estate market</li>
+                        <li><strong>Global Applicability:</strong> No geographic limitations for international expansion</li>
+                        <li><strong>SEO Advantage:</strong> Natural ranking benefits for "luxury apartments" searches</li>
+                        <li><strong>Memorability:</strong> Optimal 15-character length for user recall</li>
+                        <li><strong>Investment Grade:</strong> .COM extension commands 4-10x premium over alternatives</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Pricing Strategy Recommendation</h2>
+                
+                <div class="price-comparison">
+                    <div class="price-tier">
+                        <div class="tier-label">Quick Sale</div>
+                        <div class="tier-price">$100,000</div>
+                    </div>
+                    <div class="price-tier" style="border-color: #667eea; background: linear-gradient(to bottom, #f0f3ff, white);">
+                        <div class="tier-label">Fair Market</div>
+                        <div class="tier-price">$250,000</div>
+                    </div>
+                    <div class="price-tier">
+                        <div class="tier-label">Strategic Buyer</div>
+                        <div class="tier-price">$500,000</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="conclusion-box">
+                <h2 style="color: white; border-bottom: 2px solid rgba(255,255,255,0.3);">Final Assessment</h2>
+                <p style="margin-top: 20px; font-size: 18px; line-height: 1.8;">
+                    LuxuryApartments.com represents a tier-one digital asset with exceptional commercial potential. The convergence of robust market fundamentals, premium keyword combination, and favorable industry trends supports a valuation range of <strong style="font-size: 24px;">$100,000 to $500,000</strong>. For strategic buyers in the luxury real estate sector, the domain offers immediate brand authority, significant SEO advantages, and long-term appreciation potential in an expanding digital marketplace.
+                </p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Domain Valuation Report • Generated September 2025</p>
+            <p style="margin-top: 10px; opacity: 0.8; font-size: 14px;">This valuation is based on current market data and comparable sales. Actual transaction values may vary based on negotiation and specific buyer circumstances.</p>
+        </div>
+    </div>
+</body>
+</html>
