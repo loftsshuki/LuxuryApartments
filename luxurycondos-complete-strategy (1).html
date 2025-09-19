@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuxuryCondos.com - Complete Luxury Real Estate Platform</title>
+    <style>
+        :root {
+            /* Compass Design System Variables */
+            --cx-font-familySans: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+            --cx-font-sizeBody1: 16px;
+            --cx-font-sizeBody2: 14px;
+            --cx-font-sizeCaption: 12px;
+            --cx-font-sizeHeader3: 32px;
+            --cx-font-sizeHeader2: 40px;
+            --cx-font-sizeTitle1: 50px;
+            
+            /* Core spacing */
+            --spacing-base: 8px;
+            --spacing-unit: 24px;
+            --min-card-width: 250px;
+            
+            /* Colors - Compass minimal palette */
+            --color-black: #000000;
+            --color-white: #FFFFFF;
+            --color-gray-dark: #171717;
+            --color-gray-medium: #6C6C6C;
+            --color-gray-light: #DADADA;
+            --color-background-accent: #F4F4F4;
+            
+            /* Shadows */
+            --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-elevated: 0 4px 6px rgba(0, 0, 0, 0.1);
+            
+            /* Transitions */
+            --transition-base: all 0.2s ease-in;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--cx-font-familySans);
+            font-size: var(--cx-font-sizeBody1);
+            line-height: 1.5;
+            color: var(--color-gray-dark);
+            background: var(--color-white);
+            overflow-x: hidden;
+        }
+        
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: calc(var(--spacing-unit) * 3) var(--spacing-unit);
+            background: linear-gradient(135deg, var(--color-white) 0%, var(--color-background-accent) 100%);
+        }
+        
+        .brand-header {
+            font-size: var(--cx-font-sizeTitle1);
+            font-weight: 300;
+            letter-spacing: -2px;
+            margin-bottom: calc(var(--spacing-unit) * 0.5);
+            color: var(--color-black);
+        }
+        
+        .tagline {
+            font-size: var(--cx-font-sizeHeader3);
+            font-weight: 300;
+            color: var(--color-gray-medium);
+            margin-bottom: calc(var(--spacing-unit) * 2);
+            max-width: 900px;
+        }
+        
+        .key-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: calc(var(--spacing-unit) * 0.75);
+            margin: calc(var(--spacing-unit) * 2) 0;
+            max-width: 1400px;
+        }
+        
+        .metric-card {
+            padding: calc(var(--spacing-unit) * 1.25);
+            background: var(--color-white);
+            box-shadow: var(--shadow-card);
+            transition: var(--transition-base);
+            border: 1px solid var(--color-background-accent);
+        }
+        
+        .metric-card:hover {
+            box-shadow: var(--shadow-elevated);
+            transform: translateY(-2px);
+        }
+        
+        .metric-value {
+            font-size: 36px;
+            font-weight: 500;
+            color: var(--color-black);
+            margin-bottom: 4px;
+        }
+        
+        .metric-label {
+            font-size: var(--cx-font-sizeCaption);
+            color: var(--color-gray-medium);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .section {
+            padding: calc(var(--spacing-unit) * 3) var(--spacing-unit);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-size: var(--cx-font-sizeHeader2);
+            font-weight: 300;
+            margin-bottom: calc(var(--spacing-unit) * 1.5);
+            color: var(--color-black);
+            letter-spacing: -1px;
+        }
+        
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(var(--min-card-width), 1fr));
+            gap: var(--spacing-unit);
+            margin: calc(var(--spacing-unit) * 2) 0;
+        }
+        
+        .feature-card {
+            padding: calc(var(--spacing-unit) * 1.5);
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-light);
+            transition: var(--transition-base);
+        }
+        
+        .feature-card:hover {
+            border-color: var(--color-gray-medium);
+            background: var(--color-background-accent);
+        }
+        
+        .feature-title {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: calc(var(--spacing-unit) * 0.5);
+            color: var(--color-black);
+        }
+        
+        .feature-description {
+            font-size: var(--cx-font-sizeBody2);
+            color: var(--color-gray-medium);
+            line-height: 1.6;
+        }
+        
+        .highlight-value {
+            font-weight: 600;
+            color: var(--color-black);
+        }
+        
+        .revenue-model {
+            background: var(--color-gray-dark);
+            color: var(--color-white);
+            padding: calc(var(--spacing-unit) * 3);
+            margin: calc(var(--spacing-unit) * 2) 0;
+        }
+        
+        .revenue-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: calc(var(--spacing-unit) * 1.5);
+            margin-top: calc(var(--spacing-unit) * 2);
+        }
+        
+        .revenue-stream {
+            padding: var(--spacing-unit);
+            border-left: 2px solid var(--color-gray-medium);
+        }
+        
+        .revenue-stream h4 {
+            font-size: 18px;
+            margin-bottom: var(--spacing-base);
+            color: var(--color-white);
+            font-weight: 400;
+        }
+        
+        .revenue-stream p {
+            font-size: var(--cx-font-sizeBody2);
+            color: var(--color-gray-light);
+            line-height: 1.5;
+        }
+        
+        .service-tiers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-unit);
+            margin: calc(var(--spacing-unit) * 2) 0;
+        }
+        
+        .tier-card {
+            padding: calc(var(--spacing-unit) * 1.5);
+            background: var(--color-white);
+            border: 2px solid var(--color-gray-light);
+            transition: var(--transition-base);
+        }
+        
+        .tier-card.featured {
+            border-color: var(--color-black);
+            box-shadow: var(--shadow-elevated);
+        }
+        
+        .tier-name {
+            font-size: 24px;
+            font-weight: 400;
+            margin-bottom: var(--spacing-base);
+            color: var(--color-black);
+        }
+        
+        .tier-price {
+            font-size: 18px;
+            color: var(--color-gray-dark);
+            margin-bottom: var(--spacing-unit);
+        }
+        
+        .tier-features {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .tier-features li {
+            padding: 6px 0;
+            font-size: var(--cx-font-sizeBody2);
+            color: var(--color-gray-medium);
+        }
+        
+        .phase-timeline {
+            display: flex;
+            justify-content: space-between;
+            margin: calc(var(--spacing-unit) * 2) 0;
+            position: relative;
+            padding: var(--spacing-unit) 0;
+        }
+        
+        .phase-timeline::before {
+            content: '';
+            position: absolute;
+            top: 35px;
+            left: 10%;
+            right: 10%;
+            height: 1px;
+            background: var(--color-gray-light);
+            z-index: 0;
+        }
+        
+        .phase {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .phase-marker {
+            width: 12px;
+            height: 12px;
+            background: var(--color-black);
+            border-radius: 50%;
+            margin: 0 auto calc(var(--spacing-unit) * 0.5);
+        }
+        
+        .phase-title {
+            font-weight: 500;
+            margin-bottom: var(--spacing-base);
+            color: var(--color-black);
+        }
+        
+        .phase-description {
+            font-size: var(--cx-font-sizeCaption);
+            color: var(--color-gray-medium);
+        }
+        
+        .competitive-advantage {
+            background: var(--color-background-accent);
+            padding: calc(var(--spacing-unit) * 2);
+            margin: calc(var(--spacing-unit) * 2) 0;
+            border-left: 3px solid var(--color-black);
+        }
+        
+        .competitive-advantage h3 {
+            font-size: 24px;
+            margin-bottom: var(--spacing-unit);
+            color: var(--color-black);
+            font-weight: 400;
+        }
+        
+        .competitive-advantage ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .competitive-advantage li {
+            padding: calc(var(--spacing-base) * 0.5) 0;
+            color: var(--color-gray-dark);
+            font-size: var(--cx-font-sizeBody1);
+        }
+        
+        .competitive-advantage li::before {
+            content: "→";
+            margin-right: var(--spacing-base);
+            color: var(--color-gray-medium);
+        }
+        
+        .financial-projections {
+            background: var(--color-white);
+            padding: calc(var(--spacing-unit) * 2);
+            border: 1px solid var(--color-gray-light);
+            margin: calc(var(--spacing-unit) * 2) 0;
+        }
+        
+        .projection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-unit);
+            margin-top: var(--spacing-unit);
+        }
+        
+        .projection-item {
+            text-align: center;
+            padding: var(--spacing-unit);
+        }
+        
+        .projection-year {
+            font-size: var(--cx-font-sizeCaption);
+            color: var(--color-gray-medium);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: var(--spacing-base);
+        }
+        
+        .projection-amount {
+            font-size: 32px;
+            font-weight: 500;
+            color: var(--color-black);
+            margin-bottom: var(--spacing-base);
+        }
+        
+        .projection-details {
+            font-size: var(--cx-font-sizeCaption);
+            color: var(--color-gray-medium);
+        }
+        
+        .cta-section {
+            text-align: center;
+            padding: calc(var(--spacing-unit) * 4) var(--spacing-unit);
+            background: var(--color-white);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 16px 48px;
+            background: var(--color-black);
+            color: var(--color-white);
+            text-decoration: none;
+            font-size: var(--cx-font-sizeBody1);
+            font-weight: 500;
+            transition: var(--transition-base);
+            border: 2px solid var(--color-black);
+            letter-spacing: 0.5px;
+        }
+        
+        .cta-button:hover {
+            background: var(--color-white);
+            color: var(--color-black);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: calc(var(--spacing-unit) * 2) var(--spacing-unit);
+            }
+            
+            .brand-header {
+                font-size: 36px;
+            }
+            
+            .tagline {
+                font-size: 24px;
+            }
+            
+            .key-metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .phase-timeline {
+                flex-direction: column;
+                gap: var(--spacing-unit);
+            }
+            
+            .phase-timeline::before {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero-section">
+        <h1 class="brand-header">LuxuryCondos.com</h1>
+        <p class="tagline">Complete Luxury Real Estate Platform: Sales, Rentals & Property Management</p>
+        
+        <div class="key-metrics">
+            <div class="metric-card">
+                <div class="metric-value">$31.5B</div>
+                <div class="metric-label">Combined Market</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">$1.48B</div>
+                <div class="metric-label">PM Market 2034</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">2.23%</div>
+                <div class="metric-label">NYC Vacancy</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">71%</div>
+                <div class="metric-label">Miami Int'l Buyers</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">$54,576</div>
+                <div class="metric-label">3-Year LTV</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">25-40%</div>
+                <div class="metric-label">EBITDA Margins</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">49%</div>
+                <div class="metric-label">More Leads w/ VR</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">8.7%</div>
+                <div class="metric-label">CAGR Growth</div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <h2 class="section-title">Three-Pillar Business Model</h2>
+        
+        <div class="grid-layout">
+            <div class="feature-card">
+                <h3 class="feature-title">Luxury Sales Platform</h3>
+                <p class="feature-description">Building-specific SEO achieving <span class="highlight-value">70% conversion rates</span>. Average commission <span class="highlight-value">$45,000</span> per transaction. Focus on <span class="highlight-value">$500K-$2M</span> luxury condominiums.</p>
+            </div>
+            <div class="feature-card">
+                <h3 class="feature-title">Premium Rentals</h3>
+                <p class="feature-description">FARE Act disruption creates market opportunity. <span class="highlight-value">$6K-$15K</span> monthly rentals with <span class="highlight-value">$7,200</span> per transaction. <span class="highlight-value">3-8%</span> conversion to purchase within 18-36 months.</p>
+            </div>
+            <div class="feature-card">
+                <h3 class="feature-title">Concierge Management</h3>
+                <p class="feature-description">Premium property management with <span class="highlight-value">8-12%</span> fees vs 4-6% standard. <span class="highlight-value">$6,000</span> annual revenue per unit. <span class="highlight-value">50-70%</span> gross margins.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="revenue-model">
+            <h2 style="color: white; font-size: var(--cx-font-sizeHeader3); margin-bottom: var(--spacing-unit);">Integrated Revenue Streams</h2>
+            
+            <div class="revenue-grid">
+                <div class="revenue-stream">
+                    <h4>Sales Commissions</h4>
+                    <p>2.5-3% luxury sales<br>$45,000 avg commission<br>25 conversions Year 1</p>
+                </div>
+                <div class="revenue-stream">
+                    <h4>Rental Commissions</h4>
+                    <p>8-12% standard luxury<br>6-8% ultra-luxury ($10K+)<br>Volume discounts 15-25%</p>
+                </div>
+                <div class="revenue-stream">
+                    <h4>Management Fees</h4>
+                    <p>8-12% monthly recurring<br>75-100% first month lease<br>10-20% maintenance markup</p>
+                </div>
+                <div class="revenue-stream">
+                    <h4>Subscription Services</h4>
+                    <p>Agent: $199-699/month<br>Landlord: $99-399/property<br>$1.7M annual recurring</p>
+                </div>
+                <div class="revenue-stream">
+                    <h4>Platform Fees</h4>
+                    <p>Application: $75-100<br>Digital lease: $25-50<br>Payment: 2.95%</p>
+                </div>
+                <div class="revenue-stream">
+                    <h4>Ancillary Services</h4>
+                    <p>Insurance: 15-25% commission<br>Rent guarantee programs<br>Project management: 5-15%</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <h2 class="section-title">Property Management Service Tiers</h2>
+        
+        <div class="service-tiers">
+            <div class="tier-card">
+                <div class="tier-name">Silver</div>
+                <div class="tier-price">8-9% Management Fee</div>
+                <ul class="tier-features">
+                    <li>Essential luxury services</li>
+                    <li>Quarterly inspections</li>
+                    <li>Priority maintenance</li>
+                    <li>Basic reporting</li>
+                </ul>
+            </div>
+            <div class="tier-card featured">
+                <div class="tier-name">Gold</div>
+                <div class="tier-price">10-11% Management Fee</div>
+                <ul class="tier-features">
+                    <li>Enhanced screening</li>
+                    <li>Rent guarantee</li>
+                    <li>Monthly walkthroughs</li>
+                    <li>24/7 concierge</li>
+                    <li>Smart home integration</li>
+                </ul>
+            </div>
+            <div class="tier-card">
+                <div class="tier-name">Platinum</div>
+                <div class="tier-price">12-13% Management Fee</div>
+                <ul class="tier-features">
+                    <li>Full concierge service</li>
+                    <li>Eviction coverage</li>
+                    <li>Exclusive vendor network</li>
+                    <li>International investor support</li>
+                    <li>Lifestyle management</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <h2 class="section-title">Target Customer Segments</h2>
+        
+        <div class="grid-layout">
+            <div class="feature-card">
+                <h3 class="feature-title">Affluent Professional</h3>
+                <p class="feature-description"><span class="highlight-value">$250K-750K</span> income. Seeking <span class="highlight-value">$5K-15K</span> monthly rentals. 14-18 month leases, sub-4-hour response expectations.</p>
+            </div>
+            <div class="feature-card">
+                <h3 class="feature-title">Millionaire Renter</h3>
+                <p class="feature-description"><span class="highlight-value">26%</span> pay annually in cash. <span class="highlight-value">24%</span> investment returns vs 6% real estate. 2,500-3,500 sqft requirements.</p>
+            </div>
+            <div class="feature-card">
+                <h3 class="feature-title">International Executive</h3>
+                <p class="feature-description"><span class="highlight-value">$3K-8K</span> monthly budgets. 6-24 month assignments. Germany, China, Canada, India, Mexico origins.</p>
+            </div>
+            <div class="feature-card">
+                <h3 class="feature-title">Portfolio Builder</h3>
+                <p class="feature-description"><span class="highlight-value">$3-30M</span> net worth. 2-8 properties. <span class="highlight-value">$1,795</span> avg turnover cost. Demands real-time reporting.</p>
+            </div>
+            <div class="feature-card">
+                <h3 class="feature-title">UHNW Investor</h3>
+                <p class="feature-description"><span class="highlight-value">$30M+</span> net worth. 15-30% RE allocation. Requires institutional reporting, ESG compliance.</p>
+            </div>
+            <div class="feature-card">
+                <h3 class="feature-title">International Buyer</h3>
+                <p class="feature-description"><span class="highlight-value">$56B</span> annual foreign investment. <span class="highlight-value">$13.7B</span> Chinese investment. <span class="highlight-value">71%</span> Miami market share.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <h2 class="section-title">Technology Platform Architecture</h2>
+        
+        <div class="grid-layout">
+            <div class="feature-card">
+                <h3 class="feature-title">Core Platform</h3>
+                <p class="feature-description">AI-powered search with NLP. Virtual tours increasing inquiries <span class="highlight-value">49%</span>. Advanced international screening. Digital lease automation.</p>
+            </div>
+            <div class="feature-card">
+                <h3 class="feature-title">Property Management</h3>
+                <p class="feature-description">Yardi/AppFolio integration <span class="highlight-value">$5-15K/yr</span>. ButterflyMX smart access <span class="highlight-value">$2-4K/building</span>. 24/7 AI chatbot support.</p>
+            </div>
+            <div class="feature-card">
+                <h3 class="feature-title">SEO Dominance</h3>
+                <p class="feature-description">Building-specific content strategy. <span class="highlight-value">150-250%</span> organic traffic increase. <span class="highlight-value">90%</span> conversion on building searches.</p>
+            </div>
+        </div>
+        
+        <h3 style="margin: calc(var(--spacing-unit) * 2) 0 var(--spacing-unit) 0; font-weight: 400;">Implementation Roadmap</h3>
+        
+        <div class="phase-timeline">
+            <div class="phase">
+                <div class="phase-marker"></div>
+                <div class="phase-title">Q1-Q2 2025</div>
+                <div class="phase-description">NYC Launch<br>FARE Act advantage<br>$350K investment</div>
+            </div>
+            <div class="phase">
+                <div class="phase-marker"></div>
+                <div class="phase-title">Q3-Q4 2025</div>
+                <div class="phase-description">Miami Expansion<br>71% int'l buyers<br>PM services launch</div>
+            </div>
+            <div class="phase">
+                <div class="phase-marker"></div>
+                <div class="phase-title">Q1-Q2 2026</div>
+                <div class="phase-description">Boston & LA<br>50+ properties<br>AMO accreditation</div>
+            </div>
+            <div class="phase">
+                <div class="phase-marker"></div>
+                <div class="phase-title">Q3-Q4 2026</div>
+                <div class="phase-description">Chicago & Scale<br>International services<br>White-label platform</div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="financial-projections">
+            <h2 style="font-size: var(--cx-font-sizeHeader3); margin-bottom: var(--spacing-unit); font-weight: 400;">Combined Financial Projections</h2>
+            
+            <div class="projection-grid">
+                <div class="projection-item">
+                    <div class="projection-year">Year 1</div>
+                    <div class="projection-amount">$7.3M</div>
+                    <div class="projection-details">150 rentals<br>25 sales<br>50 PM units</div>
+                </div>
+                <div class="projection-item">
+                    <div class="projection-year">Year 2</div>
+                    <div class="projection-amount">$12.8M</div>
+                    <div class="projection-details">300 rentals<br>40 sales<br>150 PM units</div>
+                </div>
+                <div class="projection-item">
+                    <div class="projection-year">Year 3</div>
+                    <div class="projection-amount">$21.5M</div>
+                    <div class="projection-details">500 rentals<br>60 sales<br>300 PM units</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="competitive-advantage">
+            <h3>Unified Competitive Advantages</h3>
+            <ul>
+                <li>Only platform addressing sales, rentals, and property management in luxury segment</li>
+                <li>Building-specific SEO strategy proven with 70% conversion rates</li>
+                <li>FARE Act disruption creates unique NYC market entry opportunity</li>
+                <li>Premium property management with 50-70% gross margins vs 30-40% standard</li>
+                <li>International investor services capturing $56B annual foreign investment</li>
+                <li>1:15-25 luxury staff ratio vs 1:100 industry standard</li>
+                <li>Technology infrastructure enabling 49% more inquiries with virtual tours</li>
+                <li>Cross-selling synergies with 3-8% rental-to-purchase conversion</li>
+                <li>Subscription revenue creating $1.7M predictable annual income</li>
+                <li>25-40% EBITDA margins after operational expenses</li>
+            </ul>
+        </div>
+    </section>
+    
+    <section class="section">
+        <h2 class="section-title">Market-Specific Strategy</h2>
+        
+        <div class="grid-layout">
+            <div class="feature-card">
+                <h3 class="feature-title">New York City</h3>
+                <p class="feature-description">FARE Act advantage. <span class="highlight-value">2.23%</span> vacancy. <span class="highlight-value">$90/sqft</span> premium pricing. Broker license required. 68°F min heat, Local Law 97 compliance.</p>
+            </div>
+            <div class="feature-card">
+                <h3 class="feature-title">Miami</h3>
+                <p class="feature-description"><span class="highlight-value">71%</span> international buyers. <span class="highlight-value">$1.3B</span> Canadian investment. 364 quarterly luxury sales. CAM license for 10+ units.</p>
+            </div>
+            <div class="feature-card">
+                <h3 class="feature-title">Boston</h3>
+                <p class="feature-description">Annual rental registration. Strictest deposit laws. <span class="highlight-value">$50-75</span> per unit fees. Interest-bearing account requirements.</p>
+            </div>
+            <div class="feature-card">
+                <h3 class="feature-title">Los Angeles</h3>
+                <p class="feature-description">5% + inflation rent caps. Just-cause eviction. Earthquake retrofits required. Real estate license mandatory.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta-section">
+        <h2 style="font-size: var(--cx-font-sizeHeader3); margin-bottom: var(--spacing-unit); font-weight: 300;">Complete Luxury Real Estate Dominance</h2>
+        <p style="color: var(--color-gray-medium); margin-bottom: calc(var(--spacing-unit) * 2); max-width: 700px; margin-left: auto; margin-right: auto;">
+            LuxuryCondos.com's integrated platform captures value across the entire luxury real estate lifecycle - from initial rental through purchase to long-term property management - creating unmatched competitive advantages and sustainable 25-40% EBITDA margins.
+        </p>
+        <a href="#" class="cta-button">Launch Complete Strategy</a>
+    </section>
+</body>
+</html>
